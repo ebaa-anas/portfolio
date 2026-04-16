@@ -3,128 +3,170 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Admin Dashboard - Ebaa Anas</title>
+    <title>Admin CMS - Ebaa Anas</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <style>
-        body { background-color: #f8f9fa; font-family: 'Plus Jakarta Sans', sans-serif; }
-        .text-primary { color: #0d6efd !important; }
-        .btn-primary { background-color: #0d6efd !important; border-color: #0d6efd !important; color: white !important;}
+        /* Premium Admin Theme matching the Live Site */
+        body { background-color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.95rem; }
+        .text-dark { color: #0f172a !important; }
+        .text-purple { color: #7c3aed !important; }
+        
+        .btn-primary { 
+            background-color: #7c3aed !important; 
+            border-color: #7c3aed !important; 
+            color: white !important;
+            box-shadow: 0 4px 10px rgba(124, 58, 237, 0.2);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(124, 58, 237, 0.3); }
+        
+        .card { border: 1px solid #e2e8f0 !important; border-radius: 1rem !important; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.02) !important; }
+        .form-control { border-radius: 0.5rem; border: 1px solid #e2e8f0; padding: 0.75rem 1rem; background-color: #f8fafc; font-size: 0.9rem;}
+        .form-control:focus { border-color: #7c3aed; box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1); background-color: #ffffff;}
+        .form-label { font-size: 0.85rem; font-weight: 600; color: #475569; }
+        
         .admin-section { display: none; }
-        .admin-section.active { display: block; }
+        .admin-section.active { display: block; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Sidebar Tabs */
+        .list-group-item { border: none; margin-bottom: 0.5rem; border-radius: 0.5rem !important; color: #475569; font-weight: 500; transition: all 0.2s; }
+        .list-group-item:hover { background-color: #f1f5f9; color: #0f172a; }
+        .list-group-item.active { background-color: #7c3aed !important; color: white !important; box-shadow: 0 4px 10px rgba(124, 58, 237, 0.2); }
     </style>
 </head>
 <body>
 
     <div id="login-section" class="container d-flex align-items-center justify-content-center" style="min-height: 100vh;">
-        <div class="card shadow-sm border-0 rounded-4 p-5" style="max-width: 400px; width: 100%;">
-            <div class="text-center mb-4"><i class="bi bi-shield-lock text-primary" style="font-size: 3rem;"></i><h3 class="fw-bolder mt-2">Admin Login</h3></div>
-            <form id="login-form">
-                <div class="mb-3"><label class="form-label text-muted small fw-bold">Email</label><input type="email" id="admin-email" class="form-control p-3" required /></div>
-                <div class="mb-4"><label class="form-label text-muted small fw-bold">Password</label><input type="password" id="admin-password" class="form-control p-3" required /></div>
-                <button type="submit" class="btn btn-primary w-100 p-3 fw-bold rounded-pill" id="login-btn">Secure Login</button>
-                <div id="login-error" class="text-danger text-center mt-3 small d-none">Invalid email or password.</div>
+        <div class="card border-0 p-5 text-center" style="max-width: 400px; width: 100%;">
+            <div class="mb-4">
+                <div class="d-inline-flex align-items-center justify-content-center bg-purple text-white rounded-3 mb-3" style="width: 64px; height: 64px; font-size: 2rem;"><i class="bi bi-shield-lock"></i></div>
+                <h3 class="fw-bolder text-dark">CMS Login</h3>
+                <p class="text-muted small">Secure portfolio management</p>
+            </div>
+            <form id="login-form" class="text-start">
+                <div class="mb-3"><label class="form-label">Email</label><input type="email" id="admin-email" class="form-control" required /></div>
+                <div class="mb-4"><label class="form-label">Password</label><input type="password" id="admin-password" class="form-control" required /></div>
+                <button type="submit" class="btn btn-primary w-100 py-2 fw-bold rounded-pill" id="login-btn">Secure Login</button>
+                <div id="login-error" class="text-danger text-center mt-3 small d-none"><i class="bi bi-exclamation-circle me-1"></i> Invalid credentials.</div>
             </form>
         </div>
     </div>
 
     <div id="dashboard-section" class="d-none">
-        <nav class="navbar navbar-light bg-white shadow-sm py-3 px-4 mb-5">
-            <div class="container-fluid"><span class="navbar-brand fw-bolder text-primary"><i class="bi bi-speedometer2 me-2"></i>CMS Dashboard</span><button id="logout-btn" class="btn btn-outline-danger btn-sm rounded-pill px-3 fw-bold">Logout</button></div>
+        <nav class="navbar navbar-light bg-white border-bottom py-3 px-4 mb-5 sticky-top">
+            <div class="container-fluid">
+                <span class="navbar-brand fw-bolder text-dark fs-5"><i class="bi bi-command text-purple me-2"></i>Portfolio CMS</span>
+                <button id="logout-btn" class="btn btn-outline-danger btn-sm rounded-pill px-4 fw-bold">Logout</button>
+            </div>
         </nav>
 
         <div class="container px-4">
             <div class="row">
                 <div class="col-md-3 mb-4">
-                    <div class="list-group shadow-sm border-0 rounded-4">
-                        <button class="list-group-item list-group-item-action active p-3 fw-bold tab-btn" data-target="manage-projects"><i class="bi bi-code-slash me-2"></i> Projects</button>
-                        <button class="list-group-item list-group-item-action p-3 fw-bold tab-btn" data-target="manage-experience"><i class="bi bi-briefcase me-2"></i> Experience</button>
-                        <button class="list-group-item list-group-item-action p-3 fw-bold tab-btn" data-target="manage-volunteer"><i class="bi bi-heart me-2"></i> Volunteer</button>
-                        <button class="list-group-item list-group-item-action p-3 fw-bold tab-btn" data-target="manage-education"><i class="bi bi-journal-bookmark me-2"></i> Education</button>
-                        <button class="list-group-item list-group-item-action p-3 fw-bold tab-btn" data-target="manage-courses"><i class="bi bi-award me-2"></i> Courses</button>
-                        <button class="list-group-item list-group-item-action p-3 fw-bold tab-btn" data-target="manage-profile"><i class="bi bi-person-lines-fill me-2"></i> Profile & Skills</button>
+                    <div class="list-group">
+                        <button class="list-group-item list-group-item-action active px-4 py-3 tab-btn" data-target="manage-projects"><i class="bi bi-grid-1x2 me-2"></i> Projects</button>
+                        <button class="list-group-item list-group-item-action px-4 py-3 tab-btn" data-target="manage-experience"><i class="bi bi-briefcase me-2"></i> Experience</button>
+                        <button class="list-group-item list-group-item-action px-4 py-3 tab-btn" data-target="manage-volunteer"><i class="bi bi-heart me-2"></i> Volunteer</button>
+                        <button class="list-group-item list-group-item-action px-4 py-3 tab-btn" data-target="manage-education"><i class="bi bi-mortarboard me-2"></i> Education</button>
+                        <button class="list-group-item list-group-item-action px-4 py-3 tab-btn" data-target="manage-courses"><i class="bi bi-award me-2"></i> Certifications</button>
+                        <button class="list-group-item list-group-item-action px-4 py-3 tab-btn" data-target="manage-profile"><i class="bi bi-person-lines-fill me-2"></i> Profile & Skills</button>
                     </div>
                 </div>
 
                 <div class="col-md-9">
                     
                     <div id="manage-projects" class="admin-section active">
-                        <div class="card shadow-sm border-0 rounded-4 mb-4"><div class="card-body p-4 p-md-5">
-                            <h4 class="fw-bolder mb-4">Add Project</h4>
+                        <div class="card mb-4 border-0"><div class="card-body p-4 p-md-5">
+                            <h4 class="fw-bolder mb-4 text-dark">Add New Project</h4>
                             <form id="add-project-form">
-                                <div class="mb-3"><label class="form-label text-muted small fw-bold">Title</label><input type="text" id="proj-title" class="form-control p-3" required></div>
-                                <div class="mb-3"><label class="form-label text-muted small fw-bold">Description</label><textarea id="proj-desc" class="form-control p-3" rows="2" required></textarea></div>
+                                <div class="mb-3"><label class="form-label">Project Title</label><input type="text" id="proj-title" class="form-control" required></div>
+                                <div class="mb-3"><label class="form-label">Description</label><textarea id="proj-desc" class="form-control" rows="2" required></textarea></div>
+                                <div class="mb-3"><label class="form-label">Thumbnail Image URL <span class="text-muted fw-normal">(e.g., assets/focus-track.png)</span></label><input type="text" id="proj-image" class="form-control" placeholder="assets/my-image.png"></div>
                                 <div class="row">
-                                    <div class="col-md-4 mb-3"><label class="form-label text-muted small fw-bold">GitHub URL</label><input type="url" id="proj-link" class="form-control p-3"></div>
-                                    <div class="col-md-4 mb-3"><label class="form-label text-muted small fw-bold">Live Demo URL</label><input type="url" id="proj-live-link" class="form-control p-3"></div>
-                                    <div class="col-md-4 mb-4"><label class="form-label text-muted small fw-bold">Tech (Comma separated)</label><input type="text" id="proj-tech" class="form-control p-3" required></div>
+                                    <div class="col-md-4 mb-3"><label class="form-label">GitHub URL</label><input type="url" id="proj-link" class="form-control"></div>
+                                    <div class="col-md-4 mb-3"><label class="form-label">Live Demo URL</label><input type="url" id="proj-live-link" class="form-control"></div>
+                                    <div class="col-md-4 mb-4"><label class="form-label">Tech Stack (Comma separated)</label><input type="text" id="proj-tech" class="form-control" placeholder="React, Node, CSS" required></div>
                                 </div>
-                                <button type="submit" class="btn btn-primary px-4 py-3 rounded-pill fw-bold" id="save-proj-btn">Save Project</button><span id="save-success" class="text-success ms-3 fw-bold d-none">Saved!</span>
+                                <button type="submit" class="btn btn-primary px-4 py-2 rounded-pill fw-bold" id="save-proj-btn">Publish Project</button>
+                                <span id="save-success" class="badge bg-success bg-opacity-10 text-success ms-3 px-3 py-2 rounded-pill d-none">Successfully Published!</span>
                             </form>
                         </div></div>
-                        <div class="card shadow-sm border-0 rounded-4 mb-5"><div class="card-body p-4 p-md-5"><h4 class="fw-bolder mb-4">Existing Projects</h4><div class="table-responsive"><table class="table align-middle"><tbody id="admin-projects-list"></tbody></table></div></div></div>
+                        <div class="card mb-5 border-0"><div class="card-body p-4 p-md-5"><h5 class="fw-bolder mb-4">Manage Projects</h5><div class="table-responsive"><table class="table align-middle"><tbody id="admin-projects-list"></tbody></table></div></div></div>
                     </div>
 
                     <div id="manage-experience" class="admin-section">
-                        <div class="card shadow-sm border-0 rounded-4 mb-4"><div class="card-body p-4 p-md-5">
-                            <h4 class="fw-bolder mb-4">Add Experience</h4>
+                        <div class="card mb-4 border-0"><div class="card-body p-4 p-md-5">
+                            <h4 class="fw-bolder mb-4 text-dark">Add Experience</h4>
                             <form id="add-exp-form">
-                                <div class="row"><div class="col-md-6 mb-3"><label class="form-label text-muted small fw-bold">Role</label><input type="text" id="exp-role" class="form-control p-3" required></div><div class="col-md-6 mb-3"><label class="form-label text-muted small fw-bold">Company</label><input type="text" id="exp-company" class="form-control p-3" required></div></div>
-                                <div class="row"><div class="col-md-6 mb-3"><label class="form-label text-muted small fw-bold">Period</label><input type="text" id="exp-period" class="form-control p-3" required></div><div class="col-md-6 mb-3"><label class="form-label text-muted small fw-bold">Location</label><input type="text" id="exp-location" class="form-control p-3" required></div></div>
-                                <div class="mb-4"><label class="form-label text-muted small fw-bold">Description</label><textarea id="exp-desc" class="form-control p-3" rows="2" required></textarea></div>
-                                <button type="submit" class="btn btn-primary px-4 py-3 rounded-pill fw-bold" id="save-exp-btn">Save Experience</button><span id="save-exp-success" class="text-success ms-3 fw-bold d-none">Saved!</span>
+                                <div class="row"><div class="col-md-6 mb-3"><label class="form-label">Role</label><input type="text" id="exp-role" class="form-control" required></div><div class="col-md-6 mb-3"><label class="form-label">Company</label><input type="text" id="exp-company" class="form-control" required></div></div>
+                                <div class="row"><div class="col-md-6 mb-3"><label class="form-label">Period</label><input type="text" id="exp-period" class="form-control" placeholder="Jan 2024 - Present" required></div><div class="col-md-6 mb-3"><label class="form-label">Location</label><input type="text" id="exp-location" class="form-control" required></div></div>
+                                <div class="mb-4"><label class="form-label">Description (Keep it punchy)</label><textarea id="exp-desc" class="form-control" rows="2" required></textarea></div>
+                                <button type="submit" class="btn btn-primary px-4 py-2 rounded-pill fw-bold" id="save-exp-btn">Save Experience</button><span id="save-exp-success" class="badge bg-success bg-opacity-10 text-success ms-3 px-3 py-2 rounded-pill d-none">Saved!</span>
                             </form>
                         </div></div>
-                        <div class="card shadow-sm border-0 rounded-4 mb-5"><div class="card-body p-4 p-md-5"><h4 class="fw-bolder mb-4">Existing Experience</h4><div class="table-responsive"><table class="table align-middle"><tbody id="admin-exp-list"></tbody></table></div></div></div>
+                        <div class="card mb-5 border-0"><div class="card-body p-4 p-md-5"><h5 class="fw-bolder mb-4">Manage Experience</h5><div class="table-responsive"><table class="table align-middle"><tbody id="admin-exp-list"></tbody></table></div></div></div>
                     </div>
 
                     <div id="manage-volunteer" class="admin-section">
-                        <div class="card shadow-sm border-0 rounded-4 mb-4"><div class="card-body p-4 p-md-5">
-                            <h4 class="fw-bolder mb-4">Add Volunteer Role</h4>
+                        <div class="card mb-4 border-0"><div class="card-body p-4 p-md-5">
+                            <h4 class="fw-bolder mb-4 text-dark">Add Volunteer Role</h4>
                             <form id="add-vol-form">
-                                <div class="row"><div class="col-md-6 mb-3"><label class="form-label text-muted small fw-bold">Role</label><input type="text" id="vol-role" class="form-control p-3" required></div><div class="col-md-6 mb-3"><label class="form-label text-muted small fw-bold">Organization</label><input type="text" id="vol-company" class="form-control p-3" required></div></div>
-                                <div class="row"><div class="col-md-6 mb-3"><label class="form-label text-muted small fw-bold">Period</label><input type="text" id="vol-period" class="form-control p-3" required></div><div class="col-md-6 mb-3"><label class="form-label text-muted small fw-bold">Location</label><input type="text" id="vol-location" class="form-control p-3" required></div></div>
-                                <div class="mb-4"><label class="form-label text-muted small fw-bold">Description</label><textarea id="vol-desc" class="form-control p-3" rows="2" required></textarea></div>
-                                <button type="submit" class="btn btn-primary px-4 py-3 rounded-pill fw-bold" id="save-vol-btn">Save Volunteer Work</button><span id="save-vol-success" class="text-success ms-3 fw-bold d-none">Saved!</span>
+                                <div class="row"><div class="col-md-6 mb-3"><label class="form-label">Role</label><input type="text" id="vol-role" class="form-control" required></div><div class="col-md-6 mb-3"><label class="form-label">Organization</label><input type="text" id="vol-company" class="form-control" required></div></div>
+                                <div class="row"><div class="col-md-6 mb-3"><label class="form-label">Period</label><input type="text" id="vol-period" class="form-control" required></div><div class="col-md-6 mb-3"><label class="form-label">Location</label><input type="text" id="vol-location" class="form-control" required></div></div>
+                                <div class="mb-4"><label class="form-label">Description</label><textarea id="vol-desc" class="form-control" rows="2" required></textarea></div>
+                                <button type="submit" class="btn btn-primary px-4 py-2 rounded-pill fw-bold" id="save-vol-btn">Save Volunteer Work</button><span id="save-vol-success" class="badge bg-success bg-opacity-10 text-success ms-3 px-3 py-2 rounded-pill d-none">Saved!</span>
                             </form>
                         </div></div>
-                        <div class="card shadow-sm border-0 rounded-4 mb-5"><div class="card-body p-4 p-md-5"><h4 class="fw-bolder mb-4">Existing Volunteer Work</h4><div class="table-responsive"><table class="table align-middle"><tbody id="admin-vol-list"></tbody></table></div></div></div>
+                        <div class="card mb-5 border-0"><div class="card-body p-4 p-md-5"><h5 class="fw-bolder mb-4">Manage Volunteer Work</h5><div class="table-responsive"><table class="table align-middle"><tbody id="admin-vol-list"></tbody></table></div></div></div>
                     </div>
 
                     <div id="manage-education" class="admin-section">
-                        <div class="card shadow-sm border-0 rounded-4 mb-4"><div class="card-body p-4 p-md-5">
-                            <h4 class="fw-bolder mb-4">Add Education</h4>
+                        <div class="card mb-4 border-0"><div class="card-body p-4 p-md-5">
+                            <h4 class="fw-bolder mb-4 text-dark">Add Education</h4>
                             <form id="add-edu-form">
-                                <div class="row"><div class="col-md-6 mb-3"><label class="form-label text-muted small fw-bold">Degree Title</label><input type="text" id="edu-degree" class="form-control p-3" required></div><div class="col-md-6 mb-3"><label class="form-label text-muted small fw-bold">University</label><input type="text" id="edu-uni" class="form-control p-3" required></div></div>
-                                <div class="row"><div class="col-md-6 mb-3"><label class="form-label text-muted small fw-bold">Period</label><input type="text" id="edu-period" class="form-control p-3" required></div><div class="col-md-6 mb-3"><label class="form-label text-muted small fw-bold">Location</label><input type="text" id="edu-location" class="form-control p-3" required></div></div>
-                                <div class="mb-4"><label class="form-label text-muted small fw-bold">Description (Optional)</label><textarea id="edu-desc" class="form-control p-3" rows="2"></textarea></div>
-                                <button type="submit" class="btn btn-primary px-4 py-3 rounded-pill fw-bold" id="save-edu-btn">Save Education</button><span id="save-edu-success" class="text-success ms-3 fw-bold d-none">Saved!</span>
+                                <div class="row"><div class="col-md-6 mb-3"><label class="form-label">Degree Title</label><input type="text" id="edu-degree" class="form-control" required></div><div class="col-md-6 mb-3"><label class="form-label">University</label><input type="text" id="edu-uni" class="form-control" required></div></div>
+                                <div class="row"><div class="col-md-6 mb-3"><label class="form-label">Period</label><input type="text" id="edu-period" class="form-control" required></div><div class="col-md-6 mb-3"><label class="form-label">Location</label><input type="text" id="edu-location" class="form-control" required></div></div>
+                                <div class="mb-4"><label class="form-label">Description (Optional)</label><textarea id="edu-desc" class="form-control" rows="2"></textarea></div>
+                                <button type="submit" class="btn btn-primary px-4 py-2 rounded-pill fw-bold" id="save-edu-btn">Save Education</button><span id="save-edu-success" class="badge bg-success bg-opacity-10 text-success ms-3 px-3 py-2 rounded-pill d-none">Saved!</span>
                             </form>
                         </div></div>
-                        <div class="card shadow-sm border-0 rounded-4 mb-5"><div class="card-body p-4 p-md-5"><h4 class="fw-bolder mb-4">Existing Education</h4><div class="table-responsive"><table class="table align-middle"><tbody id="admin-edu-list"></tbody></table></div></div></div>
+                        <div class="card mb-5 border-0"><div class="card-body p-4 p-md-5"><h5 class="fw-bolder mb-4">Manage Education</h5><div class="table-responsive"><table class="table align-middle"><tbody id="admin-edu-list"></tbody></table></div></div></div>
                     </div>
 
                     <div id="manage-courses" class="admin-section">
-                        <div class="card shadow-sm border-0 rounded-4 mb-4"><div class="card-body p-4 p-md-5">
-                            <h4 class="fw-bolder mb-4">Add Course/Certificate</h4>
+                        <div class="card mb-4 border-0"><div class="card-body p-4 p-md-5">
+                            <h4 class="fw-bolder mb-4 text-dark">Add Certification</h4>
                             <form id="add-course-form">
-                                <div class="mb-3"><label class="form-label text-muted small fw-bold">Course Title</label><input type="text" id="course-title" class="form-control p-3" required></div>
-                                <div class="row"><div class="col-md-6 mb-4"><label class="form-label text-muted small fw-bold">Institution</label><input type="text" id="course-inst" class="form-control p-3" required></div><div class="col-md-6 mb-4"><label class="form-label text-muted small fw-bold">Year/Date</label><input type="text" id="course-date" class="form-control p-3" required></div></div>
-                                <button type="submit" class="btn btn-primary px-4 py-3 rounded-pill fw-bold" id="save-course-btn">Save Course</button><span id="save-course-success" class="text-success ms-3 fw-bold d-none">Saved!</span>
+                                <div class="mb-3"><label class="form-label">Certificate Title</label><input type="text" id="course-title" class="form-control" required></div>
+                                <div class="row"><div class="col-md-6 mb-4"><label class="form-label">Issuing Organization</label><input type="text" id="course-inst" class="form-control" required></div><div class="col-md-6 mb-4"><label class="form-label">Year</label><input type="text" id="course-date" class="form-control" required></div></div>
+                                <button type="submit" class="btn btn-primary px-4 py-2 rounded-pill fw-bold" id="save-course-btn">Save Certification</button><span id="save-course-success" class="badge bg-success bg-opacity-10 text-success ms-3 px-3 py-2 rounded-pill d-none">Saved!</span>
                             </form>
                         </div></div>
-                        <div class="card shadow-sm border-0 rounded-4 mb-5"><div class="card-body p-4 p-md-5"><h4 class="fw-bolder mb-4">Existing Courses</h4><div class="table-responsive"><table class="table align-middle"><tbody id="admin-course-list"></tbody></table></div></div></div>
+                        <div class="card mb-5 border-0"><div class="card-body p-4 p-md-5"><h5 class="fw-bolder mb-4">Manage Certifications</h5><div class="table-responsive"><table class="table align-middle"><tbody id="admin-course-list"></tbody></table></div></div></div>
                     </div>
 
                     <div id="manage-profile" class="admin-section">
-                        <div class="card shadow-sm border-0 rounded-4 mb-5"><div class="card-body p-4 p-md-5">
-                            <h4 class="fw-bolder mb-4">Manage Profile Data</h4>
-                            <div class="alert alert-info border-0 rounded-3 mb-4 small"><i class="bi bi-info-circle me-2"></i>Skills and Languages are saved as lists. Separate each item with a comma.</div>
+                        <div class="card mb-5 border-0"><div class="card-body p-4 p-md-5">
+                            <h4 class="fw-bolder mb-4 text-dark">Global Profile Settings</h4>
                             <form id="edit-profile-form">
-                                <div class="mb-4"><label class="form-label text-muted small fw-bold">Technical Skills (Comma separated)</label><textarea id="prof-skills" class="form-control p-3" rows="3" required></textarea></div>
-                                <div class="mb-4"><label class="form-label text-muted small fw-bold">Languages (Comma separated)</label><textarea id="prof-langs" class="form-control p-3" rows="2" required></textarea></div>
-                                <button type="submit" class="btn btn-primary px-4 py-3 rounded-pill fw-bold" id="update-prof-btn">Update Profile</button><span id="update-prof-success" class="text-success ms-3 fw-bold d-none"><i class="bi bi-check-circle me-1"></i> Profile Updated!</span>
+                                <h6 class="fw-bold text-purple mb-3">Header Details</h6>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3"><label class="form-label">Phone Number</label><input type="text" id="prof-phone" class="form-control" placeholder="+90 555..."></div>
+                                    <div class="col-md-6 mb-3"><label class="form-label">Website URL</label><input type="text" id="prof-website" class="form-control" placeholder="www.ebaa-anas.com"></div>
+                                </div>
+                                <div class="mb-4"><label class="form-label">Professional Summary</label><textarea id="prof-summary" class="form-control" rows="4"></textarea></div>
+                                
+                                <hr class="my-4 border-light">
+                                
+                                <h6 class="fw-bold text-purple mb-3">Global Skills (Comma separated)</h6>
+                                <div class="mb-3"><label class="form-label">Technical Skills</label><textarea id="prof-skills" class="form-control" rows="2" placeholder="React, Python, Node.js"></textarea></div>
+                                <div class="mb-3"><label class="form-label">Soft Skills</label><textarea id="prof-soft-skills" class="form-control" rows="2" placeholder="Leadership, Communication"></textarea></div>
+                                <div class="mb-4"><label class="form-label">Languages</label><input type="text" id="prof-langs" class="form-control" placeholder="English (Fluent), Arabic (Native)"></div>
+                                
+                                <button type="submit" class="btn btn-primary px-4 py-2 rounded-pill fw-bold" id="update-prof-btn">Sync Global Profile</button>
+                                <span id="update-prof-success" class="badge bg-success bg-opacity-10 text-success ms-3 px-3 py-2 rounded-pill d-none">Live Sync Complete!</span>
                             </form>
                         </div></div>
                     </div>
@@ -134,30 +176,31 @@
         </div>
     </div>
 
-    <div class="modal fade" id="editProjectModal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content border-0 rounded-4"><div class="modal-header border-bottom-0 pt-4 pb-0 px-4 px-md-5"><h4 class="modal-title fw-bolder">Edit Project</h4><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body p-4 p-md-5">
-        <form id="edit-project-form"><input type="hidden" id="edit-proj-id"><div class="mb-3"><label class="form-label text-muted small fw-bold">Title</label><input type="text" id="edit-proj-title" class="form-control p-3" required></div><div class="mb-3"><label class="form-label text-muted small fw-bold">Description</label><textarea id="edit-proj-desc" class="form-control p-3" rows="3" required></textarea></div>
+    <div class="modal fade" id="editProjectModal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content border-0 rounded-4 shadow"><div class="modal-header border-bottom-0 pt-4 pb-0 px-4 px-md-5"><h4 class="modal-title fw-bolder">Edit Project</h4><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body p-4 p-md-5">
+        <form id="edit-project-form"><input type="hidden" id="edit-proj-id"><div class="mb-3"><label class="form-label">Title</label><input type="text" id="edit-proj-title" class="form-control" required></div><div class="mb-3"><label class="form-label">Description</label><textarea id="edit-proj-desc" class="form-control" rows="3" required></textarea></div>
+        <div class="mb-3"><label class="form-label">Thumbnail Image URL</label><input type="text" id="edit-proj-image" class="form-control"></div>
         <div class="row">
-            <div class="col-md-4 mb-3"><label class="form-label text-muted small fw-bold">GitHub URL</label><input type="url" id="edit-proj-link" class="form-control p-3"></div>
-            <div class="col-md-4 mb-3"><label class="form-label text-muted small fw-bold">Live Demo URL</label><input type="url" id="edit-proj-live-link" class="form-control p-3"></div>
-            <div class="col-md-4 mb-4"><label class="form-label text-muted small fw-bold">Tech Stack</label><input type="text" id="edit-proj-tech" class="form-control p-3" required></div>
+            <div class="col-md-4 mb-3"><label class="form-label">GitHub URL</label><input type="url" id="edit-proj-link" class="form-control"></div>
+            <div class="col-md-4 mb-3"><label class="form-label">Live Demo URL</label><input type="url" id="edit-proj-live-link" class="form-control"></div>
+            <div class="col-md-4 mb-4"><label class="form-label">Tech Stack</label><input type="text" id="edit-proj-tech" class="form-control" required></div>
         </div>
-        <div class="text-end"><button type="button" class="btn btn-light rounded-pill px-4 py-3 me-2 fw-bold" data-bs-dismiss="modal">Cancel</button><button type="submit" class="btn btn-primary rounded-pill px-4 py-3 fw-bold" id="update-proj-btn">Save Changes</button></div></form>
+        <div class="text-end"><button type="button" class="btn btn-light rounded-pill px-4 py-2 me-2 fw-bold" data-bs-dismiss="modal">Cancel</button><button type="submit" class="btn btn-primary rounded-pill px-4 py-2 fw-bold" id="update-proj-btn">Save Changes</button></div></form>
     </div></div></div></div>
 
-    <div class="modal fade" id="editExpModal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content border-0 rounded-4"><div class="modal-header border-bottom-0 pt-4 pb-0 px-4 px-md-5"><h4 class="modal-title fw-bolder">Edit Experience</h4><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body p-4 p-md-5">
-        <form id="edit-exp-form"><input type="hidden" id="edit-exp-id"><div class="row"><div class="col-md-6 mb-3"><label class="form-label text-muted small fw-bold">Role</label><input type="text" id="edit-exp-role" class="form-control p-3" required></div><div class="col-md-6 mb-3"><label class="form-label text-muted small fw-bold">Company</label><input type="text" id="edit-exp-company" class="form-control p-3" required></div></div><div class="row"><div class="col-md-6 mb-3"><label class="form-label text-muted small fw-bold">Period</label><input type="text" id="edit-exp-period" class="form-control p-3" required></div><div class="col-md-6 mb-3"><label class="form-label text-muted small fw-bold">Location</label><input type="text" id="edit-exp-location" class="form-control p-3" required></div></div><div class="mb-4"><label class="form-label text-muted small fw-bold">Description</label><textarea id="edit-exp-desc" class="form-control p-3" rows="3" required></textarea></div><div class="text-end"><button type="button" class="btn btn-light rounded-pill px-4 py-3 me-2 fw-bold" data-bs-dismiss="modal">Cancel</button><button type="submit" class="btn btn-primary rounded-pill px-4 py-3 fw-bold" id="update-exp-btn">Save Changes</button></div></form>
+    <div class="modal fade" id="editExpModal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content border-0 rounded-4 shadow"><div class="modal-header border-bottom-0 pt-4 pb-0 px-4 px-md-5"><h4 class="modal-title fw-bolder">Edit Experience</h4><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body p-4 p-md-5">
+        <form id="edit-exp-form"><input type="hidden" id="edit-exp-id"><div class="row"><div class="col-md-6 mb-3"><label class="form-label">Role</label><input type="text" id="edit-exp-role" class="form-control" required></div><div class="col-md-6 mb-3"><label class="form-label">Company</label><input type="text" id="edit-exp-company" class="form-control" required></div></div><div class="row"><div class="col-md-6 mb-3"><label class="form-label">Period</label><input type="text" id="edit-exp-period" class="form-control" required></div><div class="col-md-6 mb-3"><label class="form-label">Location</label><input type="text" id="edit-exp-location" class="form-control" required></div></div><div class="mb-4"><label class="form-label">Description</label><textarea id="edit-exp-desc" class="form-control" rows="3" required></textarea></div><div class="text-end"><button type="button" class="btn btn-light rounded-pill px-4 py-2 me-2 fw-bold" data-bs-dismiss="modal">Cancel</button><button type="submit" class="btn btn-primary rounded-pill px-4 py-2 fw-bold" id="update-exp-btn">Save Changes</button></div></form>
     </div></div></div></div>
 
-    <div class="modal fade" id="editVolModal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content border-0 rounded-4"><div class="modal-header border-bottom-0 pt-4 pb-0 px-4 px-md-5"><h4 class="modal-title fw-bolder">Edit Volunteer</h4><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body p-4 p-md-5">
-        <form id="edit-vol-form"><input type="hidden" id="edit-vol-id"><div class="row"><div class="col-md-6 mb-3"><label class="form-label text-muted small fw-bold">Role</label><input type="text" id="edit-vol-role" class="form-control p-3" required></div><div class="col-md-6 mb-3"><label class="form-label text-muted small fw-bold">Organization</label><input type="text" id="edit-vol-company" class="form-control p-3" required></div></div><div class="row"><div class="col-md-6 mb-3"><label class="form-label text-muted small fw-bold">Period</label><input type="text" id="edit-vol-period" class="form-control p-3" required></div><div class="col-md-6 mb-3"><label class="form-label text-muted small fw-bold">Location</label><input type="text" id="edit-vol-location" class="form-control p-3" required></div></div><div class="mb-4"><label class="form-label text-muted small fw-bold">Description</label><textarea id="edit-vol-desc" class="form-control p-3" rows="3" required></textarea></div><div class="text-end"><button type="button" class="btn btn-light rounded-pill px-4 py-3 me-2 fw-bold" data-bs-dismiss="modal">Cancel</button><button type="submit" class="btn btn-primary rounded-pill px-4 py-3 fw-bold" id="update-vol-btn">Save Changes</button></div></form>
+    <div class="modal fade" id="editVolModal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content border-0 rounded-4 shadow"><div class="modal-header border-bottom-0 pt-4 pb-0 px-4 px-md-5"><h4 class="modal-title fw-bolder">Edit Volunteer Work</h4><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body p-4 p-md-5">
+        <form id="edit-vol-form"><input type="hidden" id="edit-vol-id"><div class="row"><div class="col-md-6 mb-3"><label class="form-label">Role</label><input type="text" id="edit-vol-role" class="form-control" required></div><div class="col-md-6 mb-3"><label class="form-label">Organization</label><input type="text" id="edit-vol-company" class="form-control" required></div></div><div class="row"><div class="col-md-6 mb-3"><label class="form-label">Period</label><input type="text" id="edit-vol-period" class="form-control" required></div><div class="col-md-6 mb-3"><label class="form-label">Location</label><input type="text" id="edit-vol-location" class="form-control" required></div></div><div class="mb-4"><label class="form-label">Description</label><textarea id="edit-vol-desc" class="form-control" rows="3" required></textarea></div><div class="text-end"><button type="button" class="btn btn-light rounded-pill px-4 py-2 me-2 fw-bold" data-bs-dismiss="modal">Cancel</button><button type="submit" class="btn btn-primary rounded-pill px-4 py-2 fw-bold" id="update-vol-btn">Save Changes</button></div></form>
     </div></div></div></div>
 
-    <div class="modal fade" id="editEduModal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content border-0 rounded-4"><div class="modal-header border-bottom-0 pt-4 pb-0 px-4 px-md-5"><h4 class="modal-title fw-bolder">Edit Education</h4><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body p-4 p-md-5">
-        <form id="edit-edu-form"><input type="hidden" id="edit-edu-id"><div class="row"><div class="col-md-6 mb-3"><label class="form-label text-muted small fw-bold">Degree</label><input type="text" id="edit-edu-degree" class="form-control p-3" required></div><div class="col-md-6 mb-3"><label class="form-label text-muted small fw-bold">University</label><input type="text" id="edit-edu-uni" class="form-control p-3" required></div></div><div class="row"><div class="col-md-6 mb-3"><label class="form-label text-muted small fw-bold">Period</label><input type="text" id="edit-edu-period" class="form-control p-3" required></div><div class="col-md-6 mb-3"><label class="form-label text-muted small fw-bold">Location</label><input type="text" id="edit-edu-location" class="form-control p-3" required></div></div><div class="mb-4"><label class="form-label text-muted small fw-bold">Description</label><textarea id="edit-edu-desc" class="form-control p-3" rows="3"></textarea></div><div class="text-end"><button type="button" class="btn btn-light rounded-pill px-4 py-3 me-2 fw-bold" data-bs-dismiss="modal">Cancel</button><button type="submit" class="btn btn-primary rounded-pill px-4 py-3 fw-bold" id="update-edu-btn">Save Changes</button></div></form>
+    <div class="modal fade" id="editEduModal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content border-0 rounded-4 shadow"><div class="modal-header border-bottom-0 pt-4 pb-0 px-4 px-md-5"><h4 class="modal-title fw-bolder">Edit Education</h4><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body p-4 p-md-5">
+        <form id="edit-edu-form"><input type="hidden" id="edit-edu-id"><div class="row"><div class="col-md-6 mb-3"><label class="form-label">Degree Title</label><input type="text" id="edit-edu-degree" class="form-control" required></div><div class="col-md-6 mb-3"><label class="form-label">University</label><input type="text" id="edit-edu-uni" class="form-control" required></div></div><div class="row"><div class="col-md-6 mb-3"><label class="form-label">Period</label><input type="text" id="edit-edu-period" class="form-control" required></div><div class="col-md-6 mb-3"><label class="form-label">Location</label><input type="text" id="edit-edu-location" class="form-control" required></div></div><div class="mb-4"><label class="form-label">Description</label><textarea id="edit-edu-desc" class="form-control" rows="3"></textarea></div><div class="text-end"><button type="button" class="btn btn-light rounded-pill px-4 py-2 me-2 fw-bold" data-bs-dismiss="modal">Cancel</button><button type="submit" class="btn btn-primary rounded-pill px-4 py-2 fw-bold" id="update-edu-btn">Save Changes</button></div></form>
     </div></div></div></div>
 
-    <div class="modal fade" id="editCourseModal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content border-0 rounded-4"><div class="modal-header border-bottom-0 pt-4 pb-0 px-4 px-md-5"><h4 class="modal-title fw-bolder">Edit Course</h4><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body p-4 p-md-5">
-        <form id="edit-course-form"><input type="hidden" id="edit-course-id"><div class="mb-3"><label class="form-label text-muted small fw-bold">Title</label><input type="text" id="edit-course-title" class="form-control p-3" required></div><div class="mb-3"><label class="form-label text-muted small fw-bold">Institution</label><input type="text" id="edit-course-inst" class="form-control p-3" required></div><div class="mb-4"><label class="form-label text-muted small fw-bold">Year/Date</label><input type="text" id="edit-course-date" class="form-control p-3" required></div><div class="text-end"><button type="button" class="btn btn-light rounded-pill px-4 py-3 me-2 fw-bold" data-bs-dismiss="modal">Cancel</button><button type="submit" class="btn btn-primary rounded-pill px-4 py-3 fw-bold" id="update-course-btn">Save Changes</button></div></form>
+    <div class="modal fade" id="editCourseModal" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered"><div class="modal-content border-0 rounded-4 shadow"><div class="modal-header border-bottom-0 pt-4 pb-0 px-4 px-md-5"><h4 class="modal-title fw-bolder">Edit Certification</h4><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body p-4 p-md-5">
+        <form id="edit-course-form"><input type="hidden" id="edit-course-id"><div class="mb-3"><label class="form-label">Certificate Title</label><input type="text" id="edit-course-title" class="form-control" required></div><div class="mb-3"><label class="form-label">Issuing Organization</label><input type="text" id="edit-course-inst" class="form-control" required></div><div class="mb-4"><label class="form-label">Year</label><input type="text" id="edit-course-date" class="form-control" required></div><div class="text-end"><button type="button" class="btn btn-light rounded-pill px-4 py-2 me-2 fw-bold" data-bs-dismiss="modal">Cancel</button><button type="submit" class="btn btn-primary rounded-pill px-4 py-2 fw-bold" id="update-course-btn">Save Changes</button></div></form>
     </div></div></div></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

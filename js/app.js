@@ -30,40 +30,32 @@ async function loadProjects() {
         let htmlContent = "";
 
         if (querySnapshot.empty) {
-            container.innerHTML = `<div class="text-center text-muted py-5">No projects found. Add some from the Admin Panel!</div>`;
+            container.innerHTML = `<div class="col-12 text-center text-muted py-5">No projects found. Add some from the Admin Panel!</div>`;
             return;
         }
 
-        querySnapshot.forEach((doc) => {
-            const projectData = doc.data();
-            
-            // Build Tech Badges (Design is blue background, text is black)
-            const techBadges = projectData.techStack 
-                ? projectData.techStack.map(tech => `<span class="badge bg-primary bg-opacity-10 text-dark px-3 py-2 rounded-pill fw-medium me-2 mb-2">${tech}</span>`).join('') 
-                : '';
-
-            const liveDemoBtn = projectData.liveUrl 
-                ? `<a href="${projectData.liveUrl}" target="_blank" class="btn btn-primary rounded-pill px-4 py-2 fw-bolder me-3 shadow-sm"><i class="bi bi-globe me-2"></i>Live Demo</a>` 
-                : '';
-                
-            const githubBtn = projectData.githubUrl 
-                ? `<a href="${projectData.githubUrl}" target="_blank" class="btn btn-outline-dark rounded-pill px-4 py-2 fw-bolder"><i class="bi bi-github me-2"></i>GitHub</a>` 
-                : '';
+        querySnapshot.forEach((docSnap) => {
+            const projectData = docSnap.data();
+            const techBadges = projectData.techStack ? projectData.techStack.map(tech => `<span class="badge tech-badge rounded-pill me-2 mb-2">${tech}</span>`).join('') : '';
+            const liveDemoBtn = projectData.liveUrl ? `<a href="${projectData.liveUrl}" target="_blank" class="btn btn-primary btn-sm rounded-pill px-3 fw-bolder shadow-sm" style="background-color: #2563eb; border: none;"><i class="bi bi-globe me-1"></i> Demo</a>` : '';
+            const githubBtn = projectData.githubUrl ? `<a href="${projectData.githubUrl}" target="_blank" class="btn btn-outline-dark btn-sm rounded-pill px-3 fw-bolder"><i class="bi bi-github me-1"></i> Code</a>` : '';
+            const imageSrc = projectData.imageUrl ? projectData.imageUrl : 'https://dummyimage.com/600x400/f8fafc/64748b&text=Project+Image';
 
             htmlContent += `
-                <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-                    <div class="card-body p-0">
-                        <div class="d-flex align-items-center flex-column flex-md-row">
-                            <div class="p-5 flex-grow-1">
-                                <h2 class="fw-bolder text-dark">${projectData.title}</h2>
-                                <p class="text-muted">${projectData.description}</p>
-                                <div class="mb-4">${techBadges}</div>
-                                <div class="d-flex flex-wrap mt-2">
-                                    ${liveDemoBtn}
-                                    ${githubBtn}
-                                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 project-card shadow-sm border-0 d-flex flex-column">
+                        <img src="${imageSrc}" class="img-fluid" alt="${projectData.title}" style="height: 200px; object-fit: cover;" />
+                        <div class="card-body p-4 d-flex flex-column">
+                            <div class="small fw-bold text-primary mb-1" style="font-size: 0.8rem;">Project</div>
+                            <h5 class="fw-bolder text-dark mb-2 fs-5">${projectData.title}</h5>
+                            <p class="text-muted small mb-4 flex-grow-1" style="line-height: 1.6;">${projectData.description}</p>
+                            <div class="d-flex flex-wrap mb-4">
+                                ${techBadges}
                             </div>
-                            <img class="img-fluid" src="https://dummyimage.com/300x400/343a40/6c757d" alt="Project Image" />
+                            <div class="mt-auto d-flex gap-2">
+                                ${liveDemoBtn}
+                                ${githubBtn}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -72,7 +64,7 @@ async function loadProjects() {
         container.innerHTML = htmlContent;
     } catch (error) {
         console.error("Error fetching projects: ", error);
-        container.innerHTML = `<div class="alert alert-danger text-center rounded-4" role="alert">Failed to load projects.</div>`;
+        container.innerHTML = `<div class="col-12 alert alert-danger text-center rounded-4" role="alert">Failed to load projects.</div>`;
     }
 }
 loadProjects();
@@ -117,7 +109,6 @@ if (contactForm) {
         }
     });
 }
-// ... (Keep your Firebase Config, loadProjects, and contactForm code exactly the same) ...
 
 // ---------------------------------------------------------
 // SECTION C: LOAD EXPERIENCE (For resume.html)
@@ -128,34 +119,32 @@ async function loadExperience() {
     try {
         const querySnapshot = await getDocs(collection(db, "experience"));
         let htmlContent = "";
-        const docs = querySnapshot.docs; // Get array to check for last item
+        const docs = querySnapshot.docs; 
 
         docs.forEach((doc, index) => {
             const exp = doc.data();
-            const descriptionHTML = (exp.description && exp.description !== "undefined") ? `<p class="text-muted mb-0 mt-3 lh-lg">${exp.description}</p>` : "";
+            const descriptionHTML = (exp.description && exp.description !== "undefined") ? `<ul class="mb-0 ps-3 mt-3"><li class="text-muted small" style="line-height: 1.7;">${exp.description}</li></ul>` : "";
             const isLast = index === docs.length - 1;
-            const borderClass = isLast ? "" : "border-bottom pb-4 mb-4"; // No line after the last item
+            const borderClass = isLast ? "" : "border-bottom pb-4 mb-4"; 
 
             htmlContent += `
-                <div class="${borderClass}">
-                    <div class="d-flex flex-column flex-md-row justify-content-between">
-                        <div class="mb-2 mb-md-0">
-                            <h5 class="fw-bolder text-dark mb-1 fs-5">${exp.role || 'Job Title'}</h5>
-                            <div class="text-primary fw-bold"><i class="bi bi-building me-2"></i>${exp.company || 'Company'}</div>
+                <div class="${borderClass}" style="border-color: #f1f5f9 !important;">
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-2">
+                        <div>
+                            <h5 class="fw-bolder text-dark mb-1 fs-6">${exp.role || 'Job Title'}</h5>
+                            <div class="text-primary small fw-medium">${exp.company || 'Company'}</div>
                         </div>
-                        <div class="text-md-end mt-2 mt-md-0">
-                            <div class="badge badge-outline rounded-pill mb-2">
-                                <i class="bi bi-calendar-event me-1"></i> ${exp.period || 'Date'}
-                            </div>
-                            <div class="small text-muted d-block"><i class="bi bi-geo-alt me-1"></i> ${exp.location || 'Location'}</div>
+                        <div class="text-md-end mt-2 mt-md-0 text-muted" style="font-size: 0.8rem;">
+                            <div class="mb-1"><i class="bi bi-calendar3 me-2"></i>${exp.period || 'Date'}</div>
+                            <div><i class="bi bi-geo-alt me-2"></i>${exp.location || 'Location'}</div>
                         </div>
                     </div>
                     ${descriptionHTML}
                 </div>
             `;
         });
-        container.innerHTML = htmlContent || `<p class="text-muted">No experience added yet.</p>`;
-    } catch (error) { container.innerHTML = `<p class="text-danger">Failed to load experience.</p>`; }
+        container.innerHTML = htmlContent || `<p class="text-muted small">No experience added yet.</p>`;
+    } catch (error) { container.innerHTML = `<p class="text-danger small">Failed to load experience.</p>`; }
 }
 loadExperience();
 
@@ -172,29 +161,27 @@ async function loadVolunteer() {
 
         docs.forEach((doc, index) => {
             const vol = doc.data();
-            const descriptionHTML = (vol.description && vol.description !== "undefined") ? `<p class="text-muted mb-0 mt-3 lh-lg">${vol.description}</p>` : "";
+            const descriptionHTML = (vol.description && vol.description !== "undefined") ? `<ul class="mb-0 ps-3 mt-3"><li class="text-muted small" style="line-height: 1.7;">${vol.description}</li></ul>` : "";
             const isLast = index === docs.length - 1;
             const borderClass = isLast ? "" : "border-bottom pb-4 mb-4";
 
             htmlContent += `
-                <div class="${borderClass}">
-                    <div class="d-flex flex-column flex-md-row justify-content-between">
-                        <div class="mb-2 mb-md-0">
-                            <h5 class="fw-bolder text-dark mb-1 fs-5">${vol.role || 'Role'}</h5>
-                            <div class="text-primary fw-bold"><i class="bi bi-heart-fill me-2"></i>${vol.company || 'Organization'}</div>
+                <div class="${borderClass}" style="border-color: #f1f5f9 !important;">
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-2">
+                        <div>
+                            <h5 class="fw-bolder text-dark mb-1 fs-6">${vol.role || 'Role'}</h5>
+                            <div class="text-primary small fw-medium">${vol.company || 'Organization'}</div>
                         </div>
-                        <div class="text-md-end mt-2 mt-md-0">
-                            <div class="badge badge-outline rounded-pill mb-2">
-                                <i class="bi bi-calendar-event me-1"></i> ${vol.period || 'Date'}
-                            </div>
-                            <div class="small text-muted d-block"><i class="bi bi-geo-alt me-1"></i> ${vol.location || 'Location'}</div>
+                        <div class="text-md-end mt-2 mt-md-0 text-muted" style="font-size: 0.8rem;">
+                            <div class="mb-1"><i class="bi bi-calendar3 me-2"></i>${vol.period || 'Date'}</div>
+                            <div><i class="bi bi-geo-alt me-2"></i>${vol.location || 'Location'}</div>
                         </div>
                     </div>
                     ${descriptionHTML}
                 </div>
             `;
         });
-        container.innerHTML = htmlContent || `<p class="text-muted">No volunteer work added yet.</p>`;
+        container.innerHTML = htmlContent || `<p class="text-muted small">No volunteer work added yet.</p>`;
     } catch (error) { console.error("Error fetching volunteer data: ", error); }
 }
 loadVolunteer();
@@ -212,30 +199,28 @@ async function loadEducation() {
 
         docs.forEach((doc, index) => {
             const edu = doc.data();
-            const descriptionHTML = (edu.description && edu.description !== "undefined") ? `<p class="text-muted mb-0 mt-3 lh-lg">${edu.description}</p>` : "";
+            const descriptionHTML = (edu.description && edu.description !== "undefined") ? `<ul class="mb-0 ps-3 mt-3"><li class="text-muted small" style="line-height: 1.7;">${edu.description}</li></ul>` : "";
             const isLast = index === docs.length - 1;
             const borderClass = isLast ? "" : "border-bottom pb-4 mb-4";
 
             htmlContent += `
-                <div class="${borderClass}">
-                    <div class="d-flex flex-column flex-md-row justify-content-between">
-                        <div class="mb-2 mb-md-0">
-                            <h5 class="fw-bolder text-dark mb-1 fs-5">${edu.degree || 'Degree Title'}</h5>
-                            <div class="text-primary fw-bold"><i class="bi bi-bank me-2"></i>${edu.university || 'University Name'}</div>
+                <div class="${borderClass}" style="border-color: #f1f5f9 !important;">
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-2">
+                        <div>
+                            <h5 class="fw-bolder text-dark mb-1 fs-6">${edu.degree || 'Degree Title'}</h5>
+                            <div class="text-primary small fw-medium">${edu.university || 'University Name'}</div>
                         </div>
-                        <div class="text-md-end mt-2 mt-md-0">
-                            <div class="badge badge-outline rounded-pill mb-2">
-                                <i class="bi bi-calendar-event me-1"></i> ${edu.period || 'Date'}
-                            </div>
-                            <div class="small text-muted d-block"><i class="bi bi-geo-alt me-1"></i> ${edu.location || 'Location'}</div>
+                        <div class="text-md-end mt-2 mt-md-0 text-muted" style="font-size: 0.8rem;">
+                            <div class="mb-1"><i class="bi bi-calendar3 me-2"></i>${edu.period || 'Date'}</div>
+                            <div><i class="bi bi-geo-alt me-2"></i>${edu.location || 'Location'}</div>
                         </div>
                     </div>
                     ${descriptionHTML}
                 </div>
             `;
         });
-        container.innerHTML = htmlContent || `<p class="text-muted">No education added yet.</p>`;
-    } catch (error) { container.innerHTML = `<p class="text-danger">Failed to load education.</p>`; }
+        container.innerHTML = htmlContent || `<p class="text-muted small">No education added yet.</p>`;
+    } catch (error) { container.innerHTML = `<p class="text-danger small">Failed to load education.</p>`; }
 }
 loadEducation();
 
@@ -248,35 +233,35 @@ async function loadCourses() {
     try {
         const querySnapshot = await getDocs(collection(db, "courses"));
         let htmlContent = "";
-        const docs = querySnapshot.docs;
-
-        docs.forEach((doc, index) => {
+        
+        querySnapshot.forEach((doc) => {
             const course = doc.data();
-            const isLast = index === docs.length - 1;
-            const borderClass = isLast ? "" : "border-bottom pb-3 mb-3";
-
             htmlContent += `
-                <div class="${borderClass} d-flex align-items-center justify-content-between">
-                    <div>
-                        <h6 class="fw-bolder text-dark mb-1 fs-6">${course.title || 'Course Title'}</h6>
-                        <div class="small text-muted"><i class="bi bi-award text-primary me-1"></i> ${course.institution || 'Institution'}</div>
+                <div class="col-md-6 mb-2">
+                    <div class="border rounded-3 p-4 h-100" style="background-color: #f8fafc; border-color: #e2e8f0 !important;">
+                        <h6 class="fw-bolder text-dark mb-1">${course.title || 'Course Title'}</h6>
+                        <div class="small text-muted mb-3">${course.institution || 'Institution'}</div>
+                        <div class="text-primary small fw-medium">${course.date || ''}</div>
                     </div>
-                    <div class="badge bg-light text-dark border px-3 py-2 rounded-pill">${course.date || ''}</div>
                 </div>
             `;
         });
-        container.innerHTML = htmlContent || `<p class="text-muted">No courses added yet.</p>`;
+        container.innerHTML = htmlContent || `<p class="col-12 text-muted small">No courses added yet.</p>`;
     } catch (error) { console.error("Error fetching courses: ", error); }
 }
 loadCourses();
 
 // ---------------------------------------------------------
-// SECTION G: LOAD SKILLS & LANGUAGES (From 'profile/main')
+// SECTION G: LOAD SKILLS, LANGUAGES, & GLOBAL PROFILE
 // ---------------------------------------------------------
 async function loadProfile() {
+    // 1. Get DOM Elements
     const skillsContainer = document.getElementById('skills-list');
     const languagesContainer = document.getElementById('languages-list');
-    if (!skillsContainer || !languagesContainer) return;
+    const softSkillsContainer = document.getElementById('soft-skills-list');
+    const summaryContainer = document.getElementById('profile-summary');
+    const phoneContainer = document.getElementById('profile-phone');
+    const websiteContainer = document.getElementById('profile-website');
 
     try {
         const docRef = doc(db, "profile", "main");
@@ -285,22 +270,49 @@ async function loadProfile() {
         if (docSnap.exists()) {
             const data = docSnap.data();
 
-            if (data.technicalSkills) {
+            // Render Technical Skills
+            if (data.technicalSkills && skillsContainer) {
                 let skillsHTML = '<div class="d-flex flex-wrap gap-2">';
                 data.technicalSkills.forEach(skill => {
-                    skillsHTML += `<span class="badge badge-soft-primary rounded-pill">${skill}</span>`;
+                    skillsHTML += `<span class="badge text-dark fw-normal px-3 py-2 rounded-pill" style="background-color: #f1f5f9; border: 1px solid #e2e8f0; font-size: 0.8rem;">${skill}</span>`;
                 });
                 skillsHTML += '</div>';
                 skillsContainer.innerHTML = skillsHTML;
             }
 
-            if (data.languages) {
+            // Render Languages
+            if (data.languages && languagesContainer) {
                 let langHTML = '<div class="d-flex flex-wrap gap-2">';
                 data.languages.forEach(lang => {
-                    langHTML += `<span class="badge badge-outline rounded-pill"><i class="bi bi-translate text-muted me-1"></i> ${lang}</span>`;
+                    langHTML += `<span class="badge fw-normal px-3 py-2 rounded-pill" style="background-color: #fdf2f8; border: 1px solid #fce7f3; color: #9d174d; font-size: 0.8rem;">${lang}</span>`;
                 });
                 langHTML += '</div>';
                 languagesContainer.innerHTML = langHTML;
+            }
+
+            // Render Soft Skills (Figma green style)
+            if (data.softSkills && softSkillsContainer) {
+                let softHTML = '<div class="d-flex flex-wrap gap-2">';
+                data.softSkills.forEach(skill => {
+                    softHTML += `<span class="badge fw-normal px-3 py-2 rounded-pill" style="background-color: #ecfdf5; border: 1px solid #d1fae5; color: #065f46; font-size: 0.8rem;">${skill}</span>`;
+                });
+                softHTML += '</div>';
+                softSkillsContainer.innerHTML = softHTML;
+            }
+
+            // Render Profile Summary Text
+            if (data.summary && summaryContainer) {
+                summaryContainer.innerText = data.summary;
+            }
+
+            // Render Phone Number
+            if (data.phone && phoneContainer) {
+                phoneContainer.innerHTML = `<i class="bi bi-telephone me-2 fs-6"></i>${data.phone}`;
+            }
+
+            // Render Website
+            if (data.website && websiteContainer) {
+                websiteContainer.innerHTML = `<i class="bi bi-globe me-2 fs-6"></i>${data.website}`;
             }
         }
     } catch (error) { console.error("Error fetching profile: ", error); }

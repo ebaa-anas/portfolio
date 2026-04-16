@@ -55,6 +55,134 @@
             .display-5 { font-size: 2.2rem !important; font-weight: 700 !important; } /* About Me Title */
             .lead { font-size: 1.1rem !important; }
             .badge { font-size: 0.85rem !important; padding: 0.6em 1.2em !important; border: none !important;}
+            /* --- Styles for image_6.png feature section --- */
+#feature-section {
+    background-color: #f8fafc !important; /* Standard page-light background */
+}
+.bg-purple {
+    background-color: #7c3aed !important; /* Specific deep purple from Figma mockup */
+    transition: transform 0.3s ease;
+}
+.feature-icon-wrapper {
+    width: 80px;
+    height: 80px;
+}
+.feature-icon-wrapper i {
+    font-size: 2rem !important;
+    transition: all 0.3s ease;
+}
+.feature-card {
+    background-color: transparent !important; /* Cards are transparent inside white container */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.feature-heading {
+    letter-spacing: -0.01em;
+}
+.feature-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Specific styling to match Figma's white container around the cards */
+#feature-section .container .rounded-4 {
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02) !important;
+}
+
+/* Subtle hover animations */
+.feature-card:hover {
+    transform: translateY(-2px);
+}
+.feature-card:hover .feature-icon-wrapper {
+    transform: scale(1.03);
+}
+.feature-card:hover .feature-icon-wrapper i {
+    transform: rotate(-3deg);
+}
+
+/* Responsive adjustments for icon sizes on mobile/tablet */
+@media (max-width: 991px) {
+    .feature-icon-wrapper {
+        width: 70px;
+        height: 70px;
+    }
+    .feature-icon-wrapper i {
+        font-size: 1.75rem !important;
+    }
+}
+@media (max-width: 767px) {
+    .feature-icon-wrapper {
+        width: 60px;
+        height: 60px;
+    }
+    .feature-icon-wrapper i {
+        font-size: 1.5rem !important;
+    }
+}   
+/* --- Modern Dark Footer --- */
+            .footer-dark {
+                background-color: #0f172a !important; /* Deep slate background */
+                color: #94a3b8; /* Soft slate text */
+                padding-top: 4rem;
+                padding-bottom: 2rem;
+            }
+            .footer-dark h5 {
+                color: #ffffff !important;
+                font-weight: 600;
+                margin-bottom: 1.5rem;
+                letter-spacing: 0.05em;
+            }
+            .footer-dark p {
+                line-height: 1.6;
+                font-size: 0.95rem;
+            }
+            .footer-link {
+                color: #94a3b8;
+                text-decoration: none;
+                transition: color 0.2s ease;
+                display: block;
+                margin-bottom: 0.75rem;
+            }
+            .footer-link:hover {
+                color: #ffffff;
+            }
+            .social-icon-link {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background-color: rgba(255, 255, 255, 0.05); /* Faint white circle */
+                color: #94a3b8;
+                transition: all 0.2s ease;
+                text-decoration: none;
+                margin-right: 0.5rem;
+            }
+            .social-icon-link:hover {
+                background-color: #7c3aed; /* Figma Purple on hover */
+                color: #ffffff;
+                transform: translateY(-2px);
+            }
+            .footer-divider {
+                border-color: rgba(255, 255, 255, 0.1);
+                margin-top: 3rem;
+                margin-bottom: 1.5rem;
+            }
+            .brand-icon-footer {
+                width: 32px;
+                height: 32px;
+                background-color: #7c3aed; /* Figma Purple */
+                color: white;
+                border-radius: 8px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+                font-size: 1.2rem;
+                margin-right: 12px;
+            }
+        
         </style>
     </head>
     <body class="d-flex flex-column h-100 bg-light">
@@ -202,7 +330,51 @@
                     </div>
                 </div>
             </header>
-            
+            <section class="py-5" id="feature-section">
+    <div class="container px-5">
+        <div class="bg-white p-5 rounded-4 border">
+            <div class="row gx-5 justify-content-center">
+                
+                <div class="col-lg-4 col-md-6 mb-5">
+                    <div class="card h-100 border-0 text-center feature-card">
+                        <div class="card-body p-4 p-md-5">
+                            <div class="bg-purple text-white rounded-3 mb-4 mx-auto d-flex align-items-center justify-content-center feature-icon-wrapper">
+                                <i class="bi bi-code-slash"></i>
+                            </div>
+                            <h3 class="fw-bolder mb-3 fs-4 text-dark feature-heading">Development</h3>
+                            <p class="text-muted mb-0 feature-description">Building robust web applications with modern technologies</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-5">
+                    <div class="card h-100 border-0 text-center feature-card">
+                        <div class="card-body p-4 p-md-5">
+                            <div class="bg-purple text-white rounded-3 mb-4 mx-auto d-flex align-items-center justify-content-center feature-icon-wrapper">
+                                <i class="bi bi-palette"></i>
+                            </div>
+                            <h3 class="fw-bolder mb-3 fs-4 text-dark feature-heading">Design</h3>
+                            <p class="text-muted mb-0 feature-description">Creating beautiful, user-centric interfaces</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-5">
+                    <div class="card h-100 border-0 text-center feature-card">
+                        <div class="card-body p-4 p-md-5">
+                            <div class="bg-purple text-white rounded-3 mb-4 mx-auto d-flex align-items-center justify-content-center feature-icon-wrapper">
+                                <i class="bi bi-magic"></i>
+                            </div>
+                            <h3 class="fw-bolder mb-3 fs-4 text-dark feature-heading">Innovation</h3>
+                            <p class="text-muted mb-0 feature-description">Pushing boundaries with creative solutions</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
             <section class="bg-light py-5">
                 <div class="container px-5">
                     <div class="row gx-5 justify-content-center">
@@ -223,19 +395,48 @@
             </section>
         </main>
         
-        <footer class="bg-white py-4 mt-auto border-top">
+       
+        <footer class="footer-dark mt-auto">
             <div class="container px-5">
-                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                    <div class="col-auto"><div class="small m-0 text-muted">Copyright &copy; Eiba Anas 2026</div></div>
+                <div class="row gx-5">
+                    <div class="col-lg-5 mb-4 mb-lg-0">
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="brand-icon-footer">E</div>
+                            <span class="fw-bolder text-white">Eiba Anas</span>
+                        </div>
+                        <p class="mb-0 text-muted" style="max-width: 350px;">
+                            Creative designer & developer crafting exceptional digital experiences.
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Quick Links</h5>
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="index.html" class="footer-link">Home</a></li>
+                            <li><a href="resume.html" class="footer-link">About</a></li>
+                            <li><a href="projects.html" class="footer-link">Projects</a></li>
+                            <li><a href="contact.html" class="footer-link">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <h5 class="text-uppercase">Connect</h5>
+                        <div class="d-flex">
+                            <a href="https://github.com/ebaa-anas" target="https://github.com/ebaa-anas" class="social-icon-link"><i class="bi bi-github"></i></a>
+                            <a href="https://www.linkedin.com/in/eiba-anas-abdalla-a164642b6/" target="https://www.linkedin.com/in/eiba-anas-abdalla-a164642b6/" class="social-icon-link"><i class="bi bi-linkedin"></i></a>
+                            <a href="https://www.instagram.com/ebaaa861/" target="https://www.instagram.com/ebaaa861/" class="social-icon-link"><i class="bi bi-instagram"></i></a>
+                            <a href="mailto:ebaaanas789@gmail.com" class="social-icon-link"><i class="bi bi-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="footer-divider" />
+                <div class="row align-items-center justify-content-center">
                     <div class="col-auto">
-                        <a class="small text-decoration-none text-muted" href="#!">Privacy</a><span class="mx-1 text-muted">&middot;</span>
-                        <a class="small text-decoration-none text-muted" href="#!">Terms</a><span class="mx-1 text-muted">&middot;</span>
-                        <a class="small text-decoration-none text-muted" href="#!">Contact</a>
+                        <div class="m-0 text-center" style="color: #64748b;">
+                            &copy; 2026 Eiba Anas. All rights reserved.
+                        </div>
                     </div>
                 </div>
             </div>
         </footer>
-        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="js/scripts.js"></script>
     </body>

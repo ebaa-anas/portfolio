@@ -3,99 +3,165 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="Ebaa Anas - Software Engineering Portfolio" />
-        <meta name="author" content="Ebaa Anas" />
-        <title>Resume - Ebaa Anas</title>
+        <meta name="description" content="Eiba Anas - Software Engineering Portfolio" />
+        <meta name="author" content="Eiba Anas" />
+        <title>Resume - Eiba Anas</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         
         <style>
             /* --- EXPERT UI/UX MINIMALIST THEME --- */
             body { 
-                background-color: #f8fafc !important; /* Slightly cooler, softer off-white */
-                font-family: 'Plus Jakarta Sans', sans-serif;
+                background-color: #f8fafc !important; 
+                font-family: 'Plus Jakarta Sans', sans-serif; 
+                font-size: 0.95rem; 
             } 
             
-            /* Premium Typography */
-            .text-dark { color: #0f172a !important; } /* Deep slate for high contrast */
-            .text-muted { color: #64748b !important; } /* Soft slate for readability */
-            .text-primary { color: #2563eb !important; } /* Modern tech blue */
-            
-            h1, h2, h3, h4, h5, h6 { 
-                color: #0f172a !important; 
-                letter-spacing: -0.03em; /* Tighter letter spacing for modern feel */
-            } 
-
-            /* Elegant Buttons */
-            .btn-primary { 
-                background-color: #2563eb !important; 
-                border-color: #2563eb !important; 
-                color: white !important;
-                box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25) !important;
-                transition: all 0.2s ease;
-            }
-            .btn-primary:hover { 
-                background-color: #1d4ed8 !important; 
-                transform: translateY(-2px);
-                box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3) !important;
+            .text-dark { color: #0f172a !important; } 
+            .text-muted { color: #64748b !important; } 
+            .text-primary { color: #2563eb !important; } 
+            .text-purple { color: #7c3aed !important; }
+            .bg-purple { background-color: #7c3aed !important; }
+            .text-gradient { 
+                background: linear-gradient(135deg, #2563eb, #9333ea, #db2777) !important; 
+                -webkit-background-clip: text !important; 
+                -webkit-text-fill-color: transparent !important; 
             }
 
-            /* The Brand Gradient */
-            .text-gradient {
-                background: linear-gradient(135deg, #2563eb, #9333ea, #db2777) !important;
-                -webkit-background-clip: text !important;
-                -webkit-text-fill-color: transparent !important;
-            }
-
-            /* Subtle Cards for the Left Sidebar */
-            .sidebar-card { 
+            /* Resume Specific Figma Layout */
+            .resume-card { 
                 background-color: #ffffff !important; 
                 border: 1px solid #e2e8f0 !important; 
-                border-radius: 1.5rem !important;
-                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02) !important;
+                border-radius: 1rem !important; 
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.02) !important; 
+            }
+            .brand-icon-xl { 
+                width: 100px; 
+                height: 100px; 
+                background: linear-gradient(135deg, #6366f1, #a855f7); 
+                color: white; 
+                border-radius: 1.2rem; 
+                display: flex; 
+                align-items: center; 
+                justify-content: center; 
+                font-size: 3.5rem; 
+                font-weight: bold; 
+            }
+            .icon-box-sm { 
+                width: 32px; 
+                height: 32px; 
+                background-color: #7c3aed; 
+                color: white; 
+                border-radius: 8px; 
+                display: flex; 
+                align-items: center; 
+                justify-content: center; 
+                font-size: 1rem; 
             }
 
-            /* Unified, Sleek Badges */
-            .badge {
-                font-size: 0.85rem !important;
-                padding: 0.6em 1em !important;
-                font-weight: 500 !important;
-                letter-spacing: 0.01em;
+            /* "What Drives Me" Internal Cards */
+            .drive-card {
+                background-color: #f8fafc !important;
+                border: 1px solid #e2e8f0 !important;
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
+                border-radius: 0.75rem;
             }
-            .badge-soft-primary {
-                background-color: #eff6ff !important; 
-                color: #2563eb !important; 
-                border: 1px solid #dbeafe !important;
+            .drive-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04) !important;
             }
-            .badge-outline {
-                background-color: transparent !important;
-                color: #475569 !important;
-                border: 1px solid #cbd5e1 !important;
+            .drive-icon {
+                width: 36px;
+                height: 36px;
+                background-color: #7c3aed; 
+                color: white;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.1rem;
             }
 
-            /* Sticky Sidebar */
-            @media (min-width: 992px) {
-                .sticky-sidebar { 
-                    position: sticky; 
-                    top: 6rem; 
-                }
+            /* --- Modern Dark Footer --- */
+            .footer-dark { 
+                background-color: #0f172a !important; 
+                color: #94a3b8; 
+                padding-top: 3rem; 
+                padding-bottom: 1.5rem; 
+                font-size: 0.85rem; 
+            }
+            .footer-dark h5 { 
+                color: #ffffff !important; 
+                font-weight: 600; 
+                margin-bottom: 1rem; 
+                font-size: 0.95rem; 
+                letter-spacing: 0.05em; 
+            }
+            .footer-link { 
+                color: #94a3b8; 
+                text-decoration: none; 
+                transition: color 0.2s ease; 
+                display: block; 
+                margin-bottom: 0.5rem; 
+            }
+            .footer-link:hover { color: #ffffff; }
+            .social-icon-link { 
+                display: inline-flex; 
+                align-items: center; 
+                justify-content: center; 
+                width: 36px; 
+                height: 36px; 
+                border-radius: 50%; 
+                background-color: rgba(255, 255, 255, 0.05); 
+                color: #94a3b8; 
+                transition: all 0.2s ease; 
+                text-decoration: none; 
+                margin-right: 0.5rem; 
+            }
+            .social-icon-link:hover { 
+                background-color: #7c3aed; 
+                color: #ffffff; 
+                transform: translateY(-2px); 
+            }
+            .footer-divider { 
+                border-color: rgba(255, 255, 255, 0.1); 
+                margin-top: 2rem; 
+                margin-bottom: 1rem; 
+            }
+            .brand-icon-footer { 
+                width: 28px; 
+                height: 28px; 
+                background-color: #7c3aed; 
+                color: white; 
+                border-radius: 6px; 
+                display: inline-flex; 
+                align-items: center; 
+                justify-content: center; 
+                font-weight: bold; 
+                font-size: 1rem; 
+                margin-right: 10px; 
             }
         </style>
     </head>
-    <body class="d-flex flex-column h-100 bg-light">
+    <body class="d-flex flex-column h-100">
         <main class="flex-shrink-0">
             <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm sticky-top">
                 <div class="container px-5">
-                    <a class="navbar-brand" href="index.html"><span class="fw-bolder text-gradient fs-4">Eiba Anas</span></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <a class="navbar-brand" href="index.html">
+                        <div class="d-flex align-items-center">
+                            <div class="brand-icon-footer me-2" style="width: 24px; height: 24px; font-size: 0.9rem;">E</div>
+                            <span class="fw-bolder text-gradient fs-6">Eiba Anas</span>
+                        </div>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
                             <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="resume.html">Resume</a></li>
+                            <li class="nav-item"><a class="nav-link text-primary" href="resume.html">Resume</a></li>
                             <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                         </ul>
@@ -103,116 +169,211 @@
                 </div>
             </nav>
 
-            <div class="container px-5 my-5">
-                <div class="d-flex align-items-center justify-content-between mb-5 pb-3 border-bottom">
-                    <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Resume</span></h1>
-                    <a class="btn btn-primary px-4 py-3 rounded-pill fw-bold" href="assets/Eiba_Anas_CV.pdf" download="Ebaa_Anas_CV.pdf">
-                        <i class="bi bi-download me-2"></i>Download CV
-                    </a>
-                </div>
-
-                <div class="row gx-5">
-                    <div class="col-lg-4 mb-5 mb-lg-0">
-                        <div class="sticky-sidebar">
-                            
-                            <div class="sidebar-card mb-4">
-                                <div class="card-body p-4 p-lg-5">
-                                    <div class="d-flex align-items-center mb-4">
-                                        <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
-                                            <i class="bi bi-tools fs-5"></i>
-                                        </div>
-                                        <h3 class="fw-bolder mb-0 ms-3 fs-4">Technical Skills</h3>
-                                    </div>
-                                    <div id="skills-list">
-                                        <div class="text-center py-2"><div class="spinner-border spinner-border-sm text-primary" role="status"></div></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="sidebar-card">
-                                <div class="card-body p-4 p-lg-5">
-                                    <div class="d-flex align-items-center mb-4">
-                                        <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
-                                            <i class="bi bi-globe fs-5"></i>
-                                        </div>
-                                        <h3 class="fw-bolder mb-0 ms-3 fs-4">Languages</h3>
-                                    </div>
-                                    <div id="languages-list">
-                                        <div class="text-center py-2"><div class="spinner-border spinner-border-sm text-primary" role="status"></div></div>
-                                    </div>
-                                </div>
-                            </div>
-
+            <section class="bg-purple py-4">
+                <div class="container px-5">
+                    <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
+                        <div class="text-center text-md-start mb-3 mb-md-0">
+                            <h1 class="text-white fw-bolder mb-1 fs-3">Resume</h1>
+                            <p class="text-white mb-0 small" style="opacity: 0.85;">Professional experience and qualifications</p>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <a href="admin.html" class="btn btn-outline-light fw-bold rounded-pill px-4 btn-sm shadow-sm py-2">
+                                <i class="bi bi-pencil-square me-2"></i>Edit Resume
+                            </a>
+                            <a href="assets/Eiba_Anas_CV.pdf" download="Eiba_Anas_CV.pdf" class="btn btn-light text-purple fw-bold rounded-pill px-4 btn-sm shadow-sm py-2">
+                                <i class="bi bi-download me-2"></i>Download PDF
+                            </a>
                         </div>
                     </div>
+                </div>
+            </section>
 
-                    <div class="col-lg-8">
+            <div class="container px-5 my-5">
+                <div class="row justify-content-center">
+                    <div class="col-xl-9 col-xxl-8">
                         
-                        <section class="mb-5 bg-white p-4 p-lg-5 rounded-4 shadow-sm border" style="border-color: #e2e8f0 !important;">
-                            <h2 class="fw-bolder mb-5 fs-3 d-flex align-items-center">
-                                <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
-                                    <i class="bi bi-briefcase fs-5"></i>
+                        <div class="card resume-card mb-4 border-0">
+                            <div class="card-body p-4 p-lg-5">
+                                <div class="d-flex flex-column flex-md-row">
+                                    <div class="brand-icon-xl me-4 mb-4 mb-md-0 shadow-sm">E</div>
+                                    <div class="flex-grow-1">
+                                        <h2 class="fw-bolder text-dark mb-1 fs-3">Eiba Anas</h2>
+                                        <div class="text-primary mb-3" style="font-size: 1.05rem;">Software Engineering Student & Developer</div>
+                                        <div class="row g-3 text-muted small">
+                                            <div class="col-sm-6 d-flex align-items-center"><i class="bi bi-envelope me-2 fs-6"></i>ebaaanas789@gmail.com</div>
+                                            <div class="col-sm-6 d-flex align-items-center" id="profile-phone"><i class="bi bi-telephone me-2 fs-6"></i>+90 555 123 4567</div>
+                                            <div class="col-sm-6 d-flex align-items-center"><i class="bi bi-geo-alt me-2 fs-6"></i>Istanbul, Turkey</div>
+                                            <div class="col-sm-6 d-flex align-items-center" id="profile-website"><i class="bi bi-globe me-2 fs-6"></i>www.ebaa-anas.com</div>
+                                        </div>
+                                    </div>
                                 </div>
-                                Experience
-                            </h2>
-                            <div id="experience-list">
-                                <div class="text-center py-4"><div class="spinner-border text-primary" role="status"></div></div>
+                                <hr style="border-color: #e2e8f0; margin: 2rem 0;">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div style="width: 4px; height: 20px; background-color: #6366f1; border-radius: 4px; margin-right: 10px;"></div>
+                                    <h5 class="fw-bolder text-dark mb-0 fs-5">Professional Summary</h5>
+                                </div>
+                                <p class="text-muted mb-0" id="profile-summary" style="line-height: 1.7; font-size: 0.95rem;">Final-year Software Engineering student at Altınbaş University with a strong passion for building professional full-stack applications. Experienced in developing dynamic, data-driven web platforms using modern technologies like React, JavaScript, and Firebase. Driven by a commitment to clean code, user-centric design, and creating impactful digital solutions.</p>
                             </div>
-                        </section>
+                        </div>
 
-                        <section class="mb-5 bg-white p-4 p-lg-5 rounded-4 shadow-sm border" style="border-color: #e2e8f0 !important;">
-                            <h2 class="fw-bolder mb-5 fs-3 d-flex align-items-center">
-                                <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
-                                    <i class="bi bi-heart fs-5"></i>
+                        <div class="card resume-card mb-4 border-0">
+                            <div class="card-body p-4 p-lg-5">
+                                <div class="d-flex align-items-center mb-4 pb-3 border-bottom" style="border-color: #f1f5f9 !important;">
+                                    <div class="icon-box-sm me-3"><i class="bi bi-lightning-charge"></i></div>
+                                    <h4 class="fw-bolder text-dark mb-0 fs-5">What Drives Me</h4>
                                 </div>
-                                Volunteer & Leadership
-                            </h2>
-                            <div id="volunteer-list">
-                                <div class="text-center py-4"><div class="spinner-border text-primary" role="status"></div></div>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="drive-card p-3 h-100">
+                                            <div class="drive-icon mb-3"><i class="bi bi-code-slash"></i></div>
+                                            <h6 class="fw-bolder text-dark mb-2">Clean Code</h6>
+                                            <p class="text-muted small mb-0" style="line-height: 1.5;">Writing maintainable, scalable code that stands the test of time.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="drive-card p-3 h-100">
+                                            <div class="drive-icon mb-3"><i class="bi bi-palette"></i></div>
+                                            <h6 class="fw-bolder text-dark mb-2">Design First</h6>
+                                            <p class="text-muted small mb-0" style="line-height: 1.5;">Starting every project with a strong design foundation and user focus.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="drive-card p-3 h-100">
+                                            <div class="drive-icon mb-3"><i class="bi bi-rocket"></i></div>
+                                            <h6 class="fw-bolder text-dark mb-2">Innovation</h6>
+                                            <p class="text-muted small mb-0" style="line-height: 1.5;">Constantly adopting new technologies to deliver cutting-edge solutions.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="drive-card p-3 h-100">
+                                            <div class="drive-icon mb-3"><i class="bi bi-people"></i></div>
+                                            <h6 class="fw-bolder text-dark mb-2">Collaboration</h6>
+                                            <p class="text-muted small mb-0" style="line-height: 1.5;">Thriving in team environments and valuing open communication.</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </section>
+                        </div>
 
-                        <section class="mb-5 bg-white p-4 p-lg-5 rounded-4 shadow-sm border" style="border-color: #e2e8f0 !important;">
-                            <h2 class="fw-bolder mb-5 fs-3 d-flex align-items-center">
-                                <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
-                                    <i class="bi bi-journal-bookmark fs-5"></i>
+                        <div class="card resume-card mb-4 border-0">
+                            <div class="card-body p-4 p-lg-5">
+                                <div class="d-flex align-items-center mb-4 pb-3 border-bottom" style="border-color: #f1f5f9 !important;">
+                                    <div class="icon-box-sm me-3"><i class="bi bi-briefcase"></i></div>
+                                    <h4 class="fw-bolder text-dark mb-0 fs-5">Work Experience</h4>
                                 </div>
-                                Education
-                            </h2>
-                            <div id="education-list">
-                                <div class="text-center py-4"><div class="spinner-border text-primary" role="status"></div></div>
+                                <div id="experience-list">
+                                    <div class="text-center py-4"><div class="spinner-border spinner-border-sm text-primary" role="status"></div></div>
+                                </div>
                             </div>
-                        </section>
+                        </div>
 
-                        <section class="mb-5 bg-white p-4 p-lg-5 rounded-4 shadow-sm border" style="border-color: #e2e8f0 !important;">
-                            <h2 class="fw-bolder mb-5 fs-3 d-flex align-items-center">
-                                <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
-                                    <i class="bi bi-award fs-5"></i>
+                        <div class="card resume-card mb-4 border-0">
+                            <div class="card-body p-4 p-lg-5">
+                                <div class="d-flex align-items-center mb-4 pb-3 border-bottom" style="border-color: #f1f5f9 !important;">
+                                    <div class="icon-box-sm me-3"><i class="bi bi-mortarboard"></i></div>
+                                    <h4 class="fw-bolder text-dark mb-0 fs-5">Education</h4>
                                 </div>
-                                Courses & Certifications
-                            </h2>
-                            <div id="courses-list">
-                                <div class="text-center py-4"><div class="spinner-border text-primary" role="status"></div></div>
+                                <div id="education-list">
+                                    <div class="text-center py-4"><div class="spinner-border spinner-border-sm text-primary" role="status"></div></div>
+                                </div>
                             </div>
-                        </section>
+                        </div>
+
+                        <div class="card resume-card mb-4 border-0">
+                            <div class="card-body p-4 p-lg-5">
+                                <div class="d-flex align-items-center mb-4 pb-3 border-bottom" style="border-color: #f1f5f9 !important;">
+                                    <div class="icon-box-sm me-3"><i class="bi bi-heart"></i></div>
+                                    <h4 class="fw-bolder text-dark mb-0 fs-5">Volunteer & Leadership</h4>
+                                </div>
+                                <div id="volunteer-list">
+                                    <div class="text-center py-4"><div class="spinner-border spinner-border-sm text-primary" role="status"></div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card resume-card mb-4 border-0">
+                            <div class="card-body p-4 p-lg-5">
+                                <div class="d-flex align-items-center mb-4 pb-3 border-bottom" style="border-color: #f1f5f9 !important;">
+                                    <div class="icon-box-sm me-3"><i class="bi bi-code-slash"></i></div>
+                                    <h4 class="fw-bolder text-dark mb-0 fs-5">Skills & Expertise</h4>
+                                </div>
+                                
+                                <h6 class="fw-bolder text-dark mb-3 fs-6">Technical Skills</h6>
+                                <div id="skills-list" class="mb-4 pb-4 border-bottom" style="border-color: #f1f5f9 !important;">
+                                    <div class="text-center py-2"><div class="spinner-border spinner-border-sm text-primary" role="status"></div></div>
+                                </div>
+                                
+                                <h6 class="fw-bolder text-dark mb-3 fs-6">Languages & Frameworks</h6>
+                                <div id="languages-list" class="mb-4 pb-4 border-bottom" style="border-color: #f1f5f9 !important;">
+                                    <div class="text-center py-2"><div class="spinner-border spinner-border-sm text-primary" role="status"></div></div>
+                                </div>
+
+                                <h6 class="fw-bolder text-dark mb-3 fs-6">Soft Skills</h6>
+                                <div class="d-flex flex-wrap gap-2" id="soft-skills-list">
+                                    <div class="text-center py-2"><div class="spinner-border spinner-border-sm text-primary" role="status"></div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card resume-card mb-4 border-0">
+                            <div class="card-body p-4 p-lg-5">
+                                <div class="d-flex align-items-center mb-4 pb-3 border-bottom" style="border-color: #f1f5f9 !important;">
+                                    <div class="icon-box-sm me-3"><i class="bi bi-award"></i></div>
+                                    <h4 class="fw-bolder text-dark mb-0 fs-5">Certifications</h4>
+                                </div>
+                                <div class="row g-3" id="courses-list">
+                                    <div class="col-12 text-center py-4"><div class="spinner-border spinner-border-sm text-primary" role="status"></div></div>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
             </div>
         </main>
         
-        <footer class="bg-white py-4 mt-auto border-top">
+        <footer class="footer-dark mt-auto">
             <div class="container px-5">
-                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                    <div class="col-auto"><div class="small m-0 text-muted">Copyright &copy; Eiba Anas 2026</div></div>
+                <div class="row gx-5">
+                    <div class="col-lg-5 mb-4 mb-lg-0">
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="brand-icon-footer">E</div>
+                            <span class="fw-bolder text-white">Eiba Anas</span>
+                        </div>
+                        <p class="mb-0 text-muted" style="max-width: 350px;">
+                            Creative designer & developer crafting exceptional digital experiences.
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Quick Links</h5>
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="index.html" class="footer-link">Home</a></li>
+                            <li><a href="resume.html" class="footer-link">About</a></li>
+                            <li><a href="projects.html" class="footer-link">Projects</a></li>
+                            <li><a href="contact.html" class="footer-link">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <h5 class="text-uppercase">Connect</h5>
+                        <div class="d-flex">
+                            <a href="https://github.com/ebaa-anas" target="_blank" class="social-icon-link"><i class="bi bi-github"></i></a>
+                            <a href="https://www.linkedin.com/in/eiba-anas-abdalla-a164642b6/" target="_blank" class="social-icon-link"><i class="bi bi-linkedin"></i></a>
+                            <a href="https://www.instagram.com/ebaaa861/" target="_blank" class="social-icon-link"><i class="bi bi-instagram"></i></a>
+                            <a href="mailto:ebaaanas789@gmail.com" class="social-icon-link"><i class="bi bi-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="footer-divider" />
+                <div class="row align-items-center justify-content-center">
                     <div class="col-auto">
-                        <a class="small text-decoration-none text-muted" href="#!">Privacy</a><span class="mx-1 text-muted">&middot;</span>
-                        <a class="small text-decoration-none text-muted" href="#!">Terms</a><span class="mx-1 text-muted">&middot;</span>
-                        <a class="small text-decoration-none text-muted" href="#!">Contact</a>
+                        <div class="m-0 text-center" style="color: #64748b;">
+                            &copy; 2026 Eiba Anas. All rights reserved.
+                        </div>
                     </div>
                 </div>
             </div>
         </footer>
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="js/scripts.js"></script>
         <script type="module" src="js/app.js"></script>
