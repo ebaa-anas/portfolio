@@ -9,7 +9,7 @@
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         
@@ -17,112 +17,82 @@
             /* --- EXPERT UI/UX MINIMALIST THEME (Synced with Resume) --- */
             
             /* 1. Global Backgrounds */
-            body { background-color: #f8f9fa !important; } 
+            body { background-color: #f8fafc !important; } /* Updated to match the nice slate tint */
             
             /* 2. Text Colors */
-            .text-primary { color: #0d6efd !important; }
-            .text-secondary { color: #6c757d !important; } 
-            h1, h2, h3, h4, h5, h6 { color: #212529 !important; letter-spacing: -0.5px; } 
+            .text-dark { color: #0f172a !important; }
+            .text-primary { color: #2563eb !important; }
+            .text-secondary { color: #64748b !important; } 
+            h1, h2, h3, h4, h5, h6 { color: #0f172a !important; letter-spacing: -0.5px; } 
 
             /* 3. Button Styling & Animations */
             .btn-primary { 
-                background-color: #0d6efd !important; 
-                border-color: #0d6efd !important; 
+                background-color: #2563eb !important; 
+                border-color: #2563eb !important; 
                 color: white !important;
-                box-shadow: 0 4px 10px rgba(13, 110, 253, 0.25) !important;
+                box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25) !important;
                 transition: transform 0.2s ease, box-shadow 0.2s ease;
             }
             .btn-primary:hover { 
-                background-color: #0b5ed7 !important; 
+                background-color: #1d4ed8 !important; 
                 transform: translateY(-2px);
-                box-shadow: 0 6px 15px rgba(13, 110, 253, 0.3) !important;
+                box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3) !important;
             }
             .btn-outline-dark { transition: transform 0.2s ease; }
             .btn-outline-dark:hover { transform: translateY(-2px); }
 
             /* 4. The 3-Color Gradient (Blue -> Purple -> Pink) */
             .text-gradient {
-                background: linear-gradient(to right, #0d6efd, #6f42c1, #e21e80) !important;
+                background: linear-gradient(135deg, #2563eb, #9333ea, #db2777) !important;
                 -webkit-background-clip: text !important;
                 -webkit-text-fill-color: transparent !important;
             }
             .bg-gradient-primary-to-secondary {
-                background: linear-gradient(135deg, #0d6efd, #6f42c1, #e21e80) !important;
+                background: linear-gradient(135deg, #2563eb, #9333ea, #db2777) !important;
             }
 
-            /* 5. TYPOGRAPHY SCALING (Fixes the "very big" fonts) */
-            .display-3 { font-size: 3.2rem !important; font-weight: 800 !important; } /* Main Hero Title */
-            .display-5 { font-size: 2.2rem !important; font-weight: 700 !important; } /* About Me Title */
+            /* 5. TYPOGRAPHY SCALING */
+            .display-3 { font-size: 3.2rem !important; font-weight: 800 !important; } 
+            .display-5 { font-size: 2.2rem !important; font-weight: 700 !important; } 
             .lead { font-size: 1.1rem !important; }
             .badge { font-size: 0.85rem !important; padding: 0.6em 1.2em !important; border: none !important;}
-            /* --- Styles for image_6.png feature section --- */
-#feature-section {
-    background-color: #f8fafc !important; /* Standard page-light background */
-}
-.bg-purple {
-    background-color: #7c3aed !important; /* Specific deep purple from Figma mockup */
-    transition: transform 0.3s ease;
-}
-.feature-icon-wrapper {
-    width: 80px;
-    height: 80px;
-}
-.feature-icon-wrapper i {
-    font-size: 2rem !important;
-    transition: all 0.3s ease;
-}
-.feature-card {
-    background-color: transparent !important; /* Cards are transparent inside white container */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.feature-heading {
-    letter-spacing: -0.01em;
-}
-.feature-description {
-    font-size: 0.95rem;
-    line-height: 1.6;
-}
+            
+            /* --- Styles for Feature Section --- */
+            #feature-section {
+                background-color: #f8fafc !important; 
+            }
+            .bg-purple {
+                background-color: #7c3aed !important; 
+                transition: transform 0.3s ease;
+            }
+            
+            /* "What Drives Me" Internal Cards */
+            .drive-card {
+                background-color: #ffffff !important;
+                border: 1px solid #e2e8f0 !important;
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
+                border-radius: 1rem;
+            }
+            .drive-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04) !important;
+            }
+            .drive-icon {
+                width: 48px;
+                height: 48px;
+                background-color: #7c3aed; 
+                color: white;
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.3rem;
+            }
 
-/* Specific styling to match Figma's white container around the cards */
-#feature-section .container .rounded-4 {
-    border-color: #e2e8f0 !important;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02) !important;
-}
-
-/* Subtle hover animations */
-.feature-card:hover {
-    transform: translateY(-2px);
-}
-.feature-card:hover .feature-icon-wrapper {
-    transform: scale(1.03);
-}
-.feature-card:hover .feature-icon-wrapper i {
-    transform: rotate(-3deg);
-}
-
-/* Responsive adjustments for icon sizes on mobile/tablet */
-@media (max-width: 991px) {
-    .feature-icon-wrapper {
-        width: 70px;
-        height: 70px;
-    }
-    .feature-icon-wrapper i {
-        font-size: 1.75rem !important;
-    }
-}
-@media (max-width: 767px) {
-    .feature-icon-wrapper {
-        width: 60px;
-        height: 60px;
-    }
-    .feature-icon-wrapper i {
-        font-size: 1.5rem !important;
-    }
-}   
-/* --- Modern Dark Footer --- */
+            /* --- Modern Dark Footer --- */
             .footer-dark {
-                background-color: #0f172a !important; /* Deep slate background */
-                color: #94a3b8; /* Soft slate text */
+                background-color: #0f172a !important; 
+                color: #94a3b8; 
                 padding-top: 4rem;
                 padding-bottom: 2rem;
             }
@@ -143,9 +113,7 @@
                 display: block;
                 margin-bottom: 0.75rem;
             }
-            .footer-link:hover {
-                color: #ffffff;
-            }
+            .footer-link:hover { color: #ffffff; }
             .social-icon-link {
                 display: inline-flex;
                 align-items: center;
@@ -153,14 +121,14 @@
                 width: 40px;
                 height: 40px;
                 border-radius: 50%;
-                background-color: rgba(255, 255, 255, 0.05); /* Faint white circle */
+                background-color: rgba(255, 255, 255, 0.05); 
                 color: #94a3b8;
                 transition: all 0.2s ease;
                 text-decoration: none;
                 margin-right: 0.5rem;
             }
             .social-icon-link:hover {
-                background-color: #7c3aed; /* Figma Purple on hover */
+                background-color: #7c3aed; 
                 color: #ffffff;
                 transform: translateY(-2px);
             }
@@ -172,7 +140,7 @@
             .brand-icon-footer {
                 width: 32px;
                 height: 32px;
-                background-color: #7c3aed; /* Figma Purple */
+                background-color: #7c3aed; 
                 color: white;
                 border-radius: 8px;
                 display: inline-flex;
@@ -182,18 +150,23 @@
                 font-size: 1.2rem;
                 margin-right: 12px;
             }
-        
         </style>
     </head>
     <body class="d-flex flex-column h-100 bg-light">
         <main class="flex-shrink-0">
             <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm sticky-top">
                 <div class="container px-5">
-                    <a class="navbar-brand" href="index.html"><span class="fw-bolder text-gradient">Eiba Anas</span></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <a class="navbar-brand" href="index.html">
+                        <div class="d-flex align-items-center">
+                            <div class="brand-icon-footer me-2" style="width: 24px; height: 24px; font-size: 0.9rem;">E</div>
+                            <span class="fw-bolder text-gradient fs-6">Eiba Anas</span>
+                        </div>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
-                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link text-primary" href="index.html">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#about-me">About</a></li>
                             <li class="nav-item"><a class="nav-link" href="resume.html">Resume</a></li>
                             <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
@@ -205,19 +178,19 @@
             <header class="py-5">
                 <div class="container px-5 pb-5">
                     <div class="row gx-5 align-items-center">
-                        <div class="col-xxl-5">
-                            <div class="text-center text-xxl-start">
+                        <div class="col-lg-5">
+                            <div class="text-center text-lg-start">
                                 <div class="badge bg-gradient-primary-to-secondary text-white mb-4"><div class="text-uppercase">Design &middot; Development &middot; Innovation</div></div>
-                                <div class="fs-3 fw-light text-muted">I can help your business to</div>
+                                <div class="fs-3 fw-light text-secondary">I can help your business to</div>
                                 <h1 class="display-3 fw-bolder mb-5"><span class="text-gradient d-inline">Get online and grow fast</span></h1>
-                                <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xxl-start mb-3">
+                                <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-lg-start mb-3">
                                     <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder rounded-pill" href="resume.html">Resume</a>
                                     <a class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder rounded-pill" href="projects.html">Projects</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xxl-7">
-                            <div class="d-flex justify-content-center mt-5 mt-xxl-0">
+                        <div class="col-lg-7">
+                            <div class="d-flex justify-content-center mt-5 mt-lg-0">
                                 <div class="profile bg-gradient-primary-to-secondary">
                                     <img class="profile-img" src="assets/profile.png" alt="..." />
                                     <div class="dots-1">
@@ -225,177 +198,93 @@
                                             <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
                                                 <path d="M227.7,12788.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,12801.6,289.7,12808.6,227.7,12788.6z"></path>
                                                 <path d="M1507.7,12788.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,12801.6,1569.7,12808.6,1507.7,12788.6z"></path>
-                                                <path d="M227.7,11508.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,11521.6,289.7,11528.6,227.7,11508.6z"></path>
-                                                <path d="M1507.7,11508.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,11521.6,1569.7,11528.6,1507.7,11508.6z"></path>
-                                                <path d="M227.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,10241.6,289.7,10248.6,227.7,10228.6z"></path>
-                                                <path d="M1507.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,10241.6,1569.7,10248.6,1507.7,10228.6z"></path>
-                                                <path d="M227.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,8961.6,289.7,8968.6,227.7,8948.6z"></path>
-                                                <path d="M1507.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,8961.6,1569.7,8968.6,1507.7,8948.6z"></path>
-                                                <path d="M227.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,7681.6,289.7,7688.6,227.7,7668.6z"></path>
-                                                <path d="M1507.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,7681.6,1569.7,7688.6,1507.7,7668.6z"></path>
-                                                <path d="M227.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,6401.6,289.7,6408.6,227.7,6388.6z"></path>
-                                                <path d="M1507.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,6401.6,1569.7,6408.6,1507.7,6388.6z"></path>
-                                                <path d="M227.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,5121.6,289.7,5128.6,227.7,5108.6z"></path>
-                                                <path d="M1507.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,5121.6,1569.7,5128.6,1507.7,5108.6z"></path>
-                                                <path d="M227.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,3841.6,289.7,3848.6,227.7,3828.6z"></path>
-                                                <path d="M1507.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,3841.6,1569.7,3848.6,1507.7,3828.6z"></path>
-                                                <path d="M227.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,2561.6,289.7,2568.6,227.7,2548.6z"></path>
-                                                <path d="M1507.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,2561.6,1569.7,2568.6,1507.7,2548.6z"></path>
-                                                <path d="M227.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,1281.6,289.7,1288.6,227.7,1268.6z"></path>
-                                                <path d="M1507.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,1281.6,1569.7,1288.6,1507.7,1268.6z"></path>
                                             </g>
                                         </svg>
-                                        </div>
+                                    </div>
                                     <div class="dots-2">
                                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 191.6 1215.4" style="enable-background: new 0 0 191.6 1215.4" xml:space="preserve">
                                             <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
                                                 <path d="M227.7,12788.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,12801.6,289.7,12808.6,227.7,12788.6z"></path>
-                                                <path d="M1507.7,12788.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,12801.6,1569.7,12808.6,1507.7,12788.6z"></path>
-                                                <path d="M227.7,11508.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,11521.6,289.7,11528.6,227.7,11508.6z"></path>
-                                                <path d="M1507.7,11508.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,11521.6,1569.7,11528.6,1507.7,11508.6z"></path>
-                                                <path d="M227.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,10241.6,289.7,10248.6,227.7,10228.6z"></path>
-                                                <path d="M1507.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,10241.6,1569.7,10248.6,1507.7,10228.6z"></path>
-                                                <path d="M227.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,8961.6,289.7,8968.6,227.7,8948.6z"></path>
-                                                <path d="M1507.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,8961.6,1569.7,8968.6,1507.7,8948.6z"></path>
-                                                <path d="M227.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,7681.6,289.7,7688.6,227.7,7668.6z"></path>
-                                                <path d="M1507.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,7681.6,1569.7,7688.6,1507.7,7668.6z"></path>
-                                                <path d="M227.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,6401.6,289.7,6408.6,227.7,6388.6z"></path>
-                                                <path d="M1507.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,6401.6,1569.7,6408.6,1507.7,6388.6z"></path>
-                                                <path d="M227.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,5121.6,289.7,5128.6,227.7,5108.6z"></path>
-                                                <path d="M1507.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,5121.6,1569.7,5128.6,1507.7,5108.6z"></path>
-                                                <path d="M227.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,3841.6,289.7,3848.6,227.7,3828.6z"></path>
-                                                <path d="M1507.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,3841.6,1569.7,3848.6,1507.7,3828.6z"></path>
-                                                <path d="M227.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,2561.6,289.7,2568.6,227.7,2548.6z"></path>
-                                                <path d="M1507.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,2561.6,1569.7,2568.6,1507.7,2548.6z"></path>
-                                                <path d="M227.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,1281.6,289.7,1288.6,227.7,1268.6z"></path>
-                                                <path d="M1507.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,1281.6,1569.7,1288.6,1507.7,1268.6z"></path>
                                             </g>
                                         </svg>
-                                        </div>
-                                    <div class="dots-3">
-                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 191.6 1215.4" style="enable-background: new 0 0 191.6 1215.4" xml:space="preserve">
-                                            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
-                                                <path d="M227.7,12788.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,12801.6,289.7,12808.6,227.7,12788.6z"></path>
-                                                <path d="M1507.7,12788.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,12801.6,1569.7,12808.6,1507.7,12788.6z"></path>
-                                                <path d="M227.7,11508.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,11521.6,289.7,11528.6,227.7,11508.6z"></path>
-                                                <path d="M1507.7,11508.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,11521.6,1569.7,11528.6,1507.7,11508.6z"></path>
-                                                <path d="M227.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,10241.6,289.7,10248.6,227.7,10228.6z"></path>
-                                                <path d="M1507.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,10241.6,1569.7,10248.6,1507.7,10228.6z"></path>
-                                                <path d="M227.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,8961.6,289.7,8968.6,227.7,8948.6z"></path>
-                                                <path d="M1507.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,8961.6,1569.7,8968.6,1507.7,8948.6z"></path>
-                                                <path d="M227.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,7681.6,289.7,7688.6,227.7,7668.6z"></path>
-                                                <path d="M1507.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,7681.6,1569.7,7688.6,1507.7,7668.6z"></path>
-                                                <path d="M227.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,6401.6,289.7,6408.6,227.7,6388.6z"></path>
-                                                <path d="M1507.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,6401.6,1569.7,6408.6,1507.7,6388.6z"></path>
-                                                <path d="M227.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,5121.6,289.7,5128.6,227.7,5108.6z"></path>
-                                                <path d="M1507.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,5121.6,1569.7,5128.6,1507.7,5108.6z"></path>
-                                                <path d="M227.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,3841.6,289.7,3848.6,227.7,3828.6z"></path>
-                                                <path d="M1507.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,3841.6,1569.7,3848.6,1507.7,3828.6z"></path>
-                                                <path d="M227.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,2561.6,289.7,2568.6,227.7,2548.6z"></path>
-                                                <path d="M1507.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,2561.6,1569.7,2568.6,1507.7,2548.6z"></path>
-                                                <path d="M227.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,1281.6,289.7,1288.6,227.7,1268.6z"></path>
-                                                <path d="M1507.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,1281.6,1569.7,1288.6,1507.7,1268.6z"></path>
-                                            </g>
-                                        </svg>
-                                        </div>
-                                    <div class="dots-4">
-                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 191.6 1215.4" style="enable-background: new 0 0 191.6 1215.4" xml:space="preserve">
-                                            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
-                                                <path d="M227.7,12788.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,12801.6,289.7,12808.6,227.7,12788.6z"></path>
-                                                <path d="M1507.7,12788.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,12801.6,1569.7,12808.6,1507.7,12788.6z"></path>
-                                                <path d="M227.7,11508.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,11521.6,289.7,11528.6,227.7,11508.6z"></path>
-                                                <path d="M1507.7,11508.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,11521.6,1569.7,11528.6,1507.7,11508.6z"></path>
-                                                <path d="M227.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,10241.6,289.7,10248.6,227.7,10228.6z"></path>
-                                                <path d="M1507.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,10241.6,1569.7,10248.6,1507.7,10228.6z"></path>
-                                                <path d="M227.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,8961.6,289.7,8968.6,227.7,8948.6z"></path>
-                                                <path d="M1507.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,8961.6,1569.7,8968.6,1507.7,8948.6z"></path>
-                                                <path d="M227.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,7681.6,289.7,7688.6,227.7,7668.6z"></path>
-                                                <path d="M1507.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,7681.6,1569.7,7688.6,1507.7,7668.6z"></path>
-                                                <path d="M227.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,6401.6,289.7,6408.6,227.7,6388.6z"></path>
-                                                <path d="M1507.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,6401.6,1569.7,6408.6,1507.7,6388.6z"></path>
-                                                <path d="M227.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,5121.6,289.7,5128.6,227.7,5108.6z"></path>
-                                                <path d="M1507.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,5121.6,1569.7,5128.6,1507.7,5108.6z"></path>
-                                                <path d="M227.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,3841.6,289.7,3848.6,227.7,3828.6z"></path>
-                                                <path d="M1507.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,3841.6,1569.7,3848.6,1507.7,3828.6z"></path>
-                                                <path d="M227.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,2561.6,289.7,2568.6,227.7,2548.6z"></path>
-                                                <path d="M1507.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,2561.6,1569.7,2568.6,1507.7,2548.6z"></path>
-                                                <path d="M227.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,1281.6,289.7,1288.6,227.7,1268.6z"></path>
-                                                <path d="M1507.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,1281.6,1569.7,1288.6,1507.7,1268.6z"></path>
-                                            </g>
-                                        </svg>
-                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </header>
+
             <section class="py-5" id="feature-section">
-    <div class="container px-5">
-        <div class="bg-white p-5 rounded-4 border">
-            <div class="row gx-5 justify-content-center">
-                
-                <div class="col-lg-4 col-md-6 mb-5">
-                    <div class="card h-100 border-0 text-center feature-card">
-                        <div class="card-body p-4 p-md-5">
-                            <div class="bg-purple text-white rounded-3 mb-4 mx-auto d-flex align-items-center justify-content-center feature-icon-wrapper">
-                                <i class="bi bi-code-slash"></i>
+                <div class="container px-5 mb-5">
+                    <div class="text-center mb-5">
+                        <h2 class="fw-bolder text-dark mb-2 display-6">What Drives Me</h2>
+                        <p class="text-secondary mx-auto lead" style="max-width: 600px;">The principles that guide my work</p>
+                    </div>
+                    
+                    <div class="row g-4 justify-content-center">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="drive-card p-4 p-md-5 h-100 text-center">
+                                <div class="drive-icon mb-4 mx-auto"><i class="bi bi-code-slash"></i></div>
+                                <h5 class="fw-bolder text-dark mb-2">Clean Code</h5>
+                                <p class="text-secondary small mb-0" style="line-height: 1.6;">Writing maintainable, scalable code that stands the test of time.</p>
                             </div>
-                            <h3 class="fw-bolder mb-3 fs-4 text-dark feature-heading">Development</h3>
-                            <p class="text-muted mb-0 feature-description">Building robust web applications with modern technologies</p>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="drive-card p-4 p-md-5 h-100 text-center">
+                                <div class="drive-icon mb-4 mx-auto"><i class="bi bi-palette"></i></div>
+                                <h5 class="fw-bolder text-dark mb-2">Design First</h5>
+                                <p class="text-secondary small mb-0" style="line-height: 1.6;">Starting every project with a strong design foundation and user focus.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="drive-card p-4 p-md-5 h-100 text-center">
+                                <div class="drive-icon mb-4 mx-auto"><i class="bi bi-lightbulb"></i></div>
+                                <h5 class="fw-bolder text-dark mb-2">Innovation</h5>
+                                <p class="text-secondary small mb-0" style="line-height: 1.6;">Constantly adopting new technologies to deliver cutting-edge solutions.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="drive-card p-4 p-md-5 h-100 text-center">
+                                <div class="drive-icon mb-4 mx-auto"><i class="bi bi-people"></i></div>
+                                <h5 class="fw-bolder text-dark mb-2">Collaboration</h5>
+                                <p class="text-secondary small mb-0" style="line-height: 1.6;">Thriving in team environments and valuing open communication.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-4 col-md-6 mb-5">
-                    <div class="card h-100 border-0 text-center feature-card">
-                        <div class="card-body p-4 p-md-5">
-                            <div class="bg-purple text-white rounded-3 mb-4 mx-auto d-flex align-items-center justify-content-center feature-icon-wrapper">
-                                <i class="bi bi-palette"></i>
-                            </div>
-                            <h3 class="fw-bolder mb-3 fs-4 text-dark feature-heading">Design</h3>
-                            <p class="text-muted mb-0 feature-description">Creating beautiful, user-centric interfaces</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-5">
-                    <div class="card h-100 border-0 text-center feature-card">
-                        <div class="card-body p-4 p-md-5">
-                            <div class="bg-purple text-white rounded-3 mb-4 mx-auto d-flex align-items-center justify-content-center feature-icon-wrapper">
-                                <i class="bi bi-magic"></i>
-                            </div>
-                            <h3 class="fw-bolder mb-3 fs-4 text-dark feature-heading">Innovation</h3>
-                            <p class="text-muted mb-0 feature-description">Pushing boundaries with creative solutions</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</section>
-            <section class="bg-light py-5">
-                <div class="container px-5">
-                    <div class="row gx-5 justify-content-center">
-                        <div class="col-xxl-8">
-                            <div class="text-center my-5">
-                                <h2 class="display-5 fw-bolder"><span class="text-gradient d-inline">About Me</span></h2>
-                                <p class="lead fw-light mb-4">My name is Eiba Anas and I help brands grow.</p>
-                                <p class="text-muted">Final-year Software Engineering student with a dedicated focus on "Technology for Good." I am passionate about building scalable, real-time ecosystems using modern web technologies to solve real-world challenges.</p>
-                                <div class="d-flex justify-content-center fs-2 gap-4">
-                                    <a class="text-gradient" href="#!"><i class="bi bi-twitter"></i></a>
-                                    <a class="text-gradient" href="#!"><i class="bi bi-linkedin"></i></a>
-                                    <a class="text-gradient" href="https://github.com/ebaa-anas" target="_blank"><i class="bi bi-github"></i></a>
+            </section>
+            
+            <section class="py-5 bg-white" id="about-me">
+                <div class="container px-5 my-5">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10">
+                            <div class="card border-0 shadow-lg rounded-4 p-4 p-md-5" style="box-shadow: 0 15px 35px rgba(0,0,0,0.05) !important;">
+                                <div class="row gx-5 align-items-center">
+                                    <div class="col-md-8">
+                                        <h2 class="display-6 fw-bolder text-dark mb-3">About <span class="text-gradient">Me</span></h2>
+                                        <p class="lead fw-bold mb-3 text-dark">My name is Eiba Anas and I help brands grow.</p>
+                                        <p class="text-secondary mb-4" style="line-height: 1.8;">Final-year Software Engineering student with a dedicated focus on "Technology for Good." I am passionate about building scalable, real-time ecosystems using modern web technologies to solve real-world challenges.</p>
+                                        <div class="d-flex fs-4 gap-3">
+                                            <a class="social-icon-link" style="width: 45px; height: 45px; font-size: 1.3rem; background-color: #f1f5f9; color: #7c3aed;" href="https://www.linkedin.com/in/eiba-anas-abdalla-a164642b6/" target="_blank"><i class="bi bi-linkedin"></i></a>
+                                            <a class="social-icon-link" style="width: 45px; height: 45px; font-size: 1.3rem; background-color: #f1f5f9; color: #7c3aed;" href="https://github.com/ebaa-anas" target="_blank"><i class="bi bi-github"></i></a>
+                                            <a class="social-icon-link" style="width: 45px; height: 45px; font-size: 1.3rem; background-color: #f1f5f9; color: #7c3aed;" href="https://www.instagram.com/ebaaa861/" target="_blank"><i class="bi bi-instagram"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 text-center mt-5 mt-md-0 d-none d-md-block">
+                                        <div class="bg-gradient-primary-to-secondary rounded-circle d-inline-flex align-items-center justify-content-center shadow-sm" style="width: 160px; height: 160px; opacity: 0.9;">
+                                            <i class="bi bi-code-slash text-white display-3"></i>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+
         </main>
         
-       
         <footer class="footer-dark mt-auto">
             <div class="container px-5">
                 <div class="row gx-5">
@@ -420,9 +309,9 @@
                     <div class="col-lg-4 col-md-6">
                         <h5 class="text-uppercase">Connect</h5>
                         <div class="d-flex">
-                            <a href="https://github.com/ebaa-anas" target="https://github.com/ebaa-anas" class="social-icon-link"><i class="bi bi-github"></i></a>
-                            <a href="https://www.linkedin.com/in/eiba-anas-abdalla-a164642b6/" target="https://www.linkedin.com/in/eiba-anas-abdalla-a164642b6/" class="social-icon-link"><i class="bi bi-linkedin"></i></a>
-                            <a href="https://www.instagram.com/ebaaa861/" target="https://www.instagram.com/ebaaa861/" class="social-icon-link"><i class="bi bi-instagram"></i></a>
+                            <a href="https://github.com/ebaa-anas" target="_blank" class="social-icon-link"><i class="bi bi-github"></i></a>
+                            <a href="https://www.linkedin.com/in/eiba-anas-abdalla-a164642b6/" target="_blank" class="social-icon-link"><i class="bi bi-linkedin"></i></a>
+                            <a href="https://www.instagram.com/ebaaa861/" target="_blank" class="social-icon-link"><i class="bi bi-instagram"></i></a>
                             <a href="mailto:ebaaanas789@gmail.com" class="social-icon-link"><i class="bi bi-envelope"></i></a>
                         </div>
                     </div>
